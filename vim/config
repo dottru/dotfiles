@@ -1,0 +1,23 @@
+execute pathogen#infect()
+
+set number
+set hidden
+set ts=4
+set autoindent
+set smartindent
+
+syntax on
+filetype plugin indent on
+
+"set backspace
+"set incsearch
+"set scrolloff
+"set noundofile
+
+set bg=dark
+colorscheme solarized
+
+" If term doesn't have the nutso solarized scheme, just set this
+" let g:solarized_termcolors=256
+
+
