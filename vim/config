@@ -2,7 +2,11 @@ execute pathogen#infect()
 
 set number
 set hidden
-set ts=4
+
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
 set autoindent
 set smartindent
 
@@ -14,10 +18,39 @@ filetype plugin indent on
 "set scrolloff
 "set noundofile
 
-set bg=dark
+set background=dark
 colorscheme solarized
 
 " If term doesn't have the nutso solarized scheme, just set this
 " let g:solarized_termcolors=256
+
+" Buffer navigation
+nnoremap <Leader>1 :1b<CR>
+nnoremap <Leader>2 :2b<CR>
+nnoremap <Leader>3 :3b<CR>
+nnoremap <Leader>4 :4b<CR>
+nnoremap <Leader>5 :5b<CR>
+nnoremap <Leader>6 :6b<CR>
+nnoremap <Leader>7 :7b<CR>
+nnoremap <Leader>8 :8b<CR>
+nnoremap <Leader>9 :9b<CR>
+nnoremap <Leader>0 :10b<CR>
+
+nnoremap <Leader>b :ls<CR>
+nnoremap <Leader>e :NERDTreeToggle<CR>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

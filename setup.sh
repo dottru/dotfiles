@@ -47,12 +47,3 @@ p="pathogen"
 mkdir $VIMDIR/autoload
 LinkIt $VIMDIR/bundle/$p/autoload/$p.vim $VIMDIR/autoload/$p.vim
 
-# Enable color in git
-echo "Enabling color in git..."
-git config --global --add color.ui true
-
-
-
-
-
-
