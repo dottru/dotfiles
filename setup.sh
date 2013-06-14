@@ -47,3 +47,9 @@ p="pathogen"
 mkdir $VIMDIR/autoload
 LinkIt $VIMDIR/bundle/$p/autoload/$p.vim $VIMDIR/autoload/$p.vim
 
+
+Title "Linking gitconfig"
+LinkIt $DF/gitconfig $HOME/.gitconfig
+
+
+
