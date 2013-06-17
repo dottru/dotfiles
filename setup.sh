@@ -1,67 +1,106 @@
 #!/usr/bin/env bash
-clear
 
-# Func defs
-function ClearWay () {
-	echo "Permanently deleting $1...";
-	rm -rf $1
-}
-function LinkIt () {
-	ClearWay $2;
+. scripts/common.sh
+
+function VariableDefs () {
+	VIMDIR=$HOME/.vim
+	VIMRC=$HOME/.vimrc
 	
-	echo "Linking [ $1 ] ==> [ $2 ]";
-	ln -s $1 $2;
-} 
-function Title () {
-	echo -e  "\r\n=========\r\n$1\r\n"
+	ID=`whoami`@`hostname`;
+	SEP="========================="
+
+	# Script path
+	SCRIPT_PATH="${BASH_SOURCE[0]}";
+	if ([ -h "${SCRIPT_PATH}" ]) then
+		while([ -h "${SCRIPT_PATH}" ]) do SCRIPT_PATH=`readlink "${SCRIPT_PATH}"`; done
+	fi
+	pushd . > /dev/null
+	cd `dirname ${SCRIPT_PATH}` > /dev/null
+	DF=`pwd`;
+	popd  > /dev/null
+	# / script path
+
+	# common dirs
+	HOME=~
+	BAK=/tmp/script_backups
 }
-function ReMake () {
-	echo "Re-creating $1";
-	rm -rf $1;
-	mkdir $1;
+
+function VimSetup () {
+	Title "Symlinking vim settings."
+	SymLink $DF/vim/config $VIMRC 
+	SymLink $DF/vim $VIMDIR
+
+	Title "Linking pathogen.vim bundle..."
+	p="pathogen"
+	MkDir $VIMDIR/autoload
+	SymLink $VIMDIR/bundle/$p/autoload/$p.vim $VIMDIR/autoload/$p.vim
 }
 
+function GitSetup () {
+	Title "Linking git config."
+	SymLink $DF/gitconfig $HOME/.gitconfig
+	Title "Asking git to cache user credentials..."
+	git config --global credential.helper 'cache --timeout=360000'
+}
 
-# common dirs
-HOME=~
-DF=$HOME/dotfiles
-BAK=/tmp/script_backups
+function SSHSetup () {
+	PUBKEY=$HOME/.ssh/id_rsa.pub
+	DEST=$DF/ssh_keys/$ID.pub
 
-# set vim vars
-VIMDIR=$HOME/.vim
-VIMRC=$HOME/.vimrc
+	Title "SSH configuration"
 
-# =====
-# INTRO VARS
-# =====
-echo "home  --  $HOME | vimd  --  $VIMDIR"
-echo "dotf  --  $DF | virc  --  $VIMRC"
-echo -e "back  --  $BAK \r\n====================\r\n"
+	if [ ! -f $PUBKEY ]; then
+		Print "Generating SSH key for $ID"
+		ssh-keygen -q -t rsa -f ~/.ssh/id_rsa -N ""
+		cat $PUBKEY >> $DEST 
+		git add $DEST && git commit -m "Generated pubkey for $ID" && git push
+	else
+		echo "No need to generate an ssh key..."
+	fi
+}
 
-# VIM
-Title "Symlinking the vim bullshits"
-LinkIt $DF/vim/config $VIMRC 
-LinkIt $DF/vim $VIMDIR
+function SudoSetup () {
+	bash as_root.sh;
+}
 
-Title "Linking pathogen.vim..."
-p="pathogen"
-mkdir $VIMDIR/autoload
-LinkIt $VIMDIR/bundle/$p/autoload/$p.vim $VIMDIR/autoload/$p.vim
+function FishSetup () {
+	Section "Shell customisations"
+	Install fish
+	Print "Default shell changed to 'fish' shell."
+	Print " * Reset to bash with [ chsh -s `whereis bash` ] *"
+	chsh -s /usr/bin/fish
+	# TODO: add fish config file
+}
 
-# Git
-Title "Linking gitconfig"
-LinkIt $DF/gitconfig $HOME/.gitconfig
+#function MainEC2 () {
+	#Section	"EC2 Tools"
+	#Install java7-jdk
+	#Install ec2-api-tools
+	#cat ./ec2_vars.sh >> ~/.bashrc # bashrc conf
+#}
 
-# SSH
-Title "SSH keys"
-PUBKEY=$HOME/.ssh/id_rsa.pub
-DEST=$DF/ssh_keys/`whoami`_`hostname`.pub
+function MakeChanges () {
+	VimSetup;
 
-if [ ! -f $PUBKEY ]; then
-	ssh-keygen -q -t rsa -f ~/.ssh/id_rsa -N ""
-else
-	echo "No need to generate a key..."
-fi
+	#GitSetup;
 
-cat ~/.ssh/id_rsa.pub >> $DEST 
-git add $DEST && git commit -m "Generated pubkey for `whoami`@`hostame`" && git push
+	#SSHSetup;
+	
+  #FishSetup;
+
+	#SudoSetup;
+}
+
+function Main () {
+  VariableDefs;
+	
+  Section "Configured Paths.";
+
+	Print "Home    --  $HOME | VIM    --  $VIMDIR";
+	Print "CFGs    --  $DF | VI RC  --  $VIMRC";
+  Title "Setup will destroy your existing dotfiles. Use carefully."; NL;
+  
+  Confirmation "Continue setup" MakeChanges;
+}
+
+Main;

@@ -6,3 +6,5 @@
 	email = dottru@gmail.com
 [push]
 	default = simple
+[credential]
+	helper = cache --timeout=360000

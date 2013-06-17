@@ -3,10 +3,10 @@ execute pathogen#infect()
 set number
 set hidden
 
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
 set autoindent
 set smartindent
 
@@ -38,19 +38,29 @@ nnoremap <Leader>0 :10b<CR>
 
 nnoremap <Leader>b :ls<CR>
 nnoremap <Leader>e :NERDTreeToggle<CR>
+nnoremap <Leader>nc :NERDTreeClose<CR>
+nnoremap <Leader>s  :source %<CR>
+nnoremap <Leader>rb :!bash %<CR>
 
+nnoremap <Leader>v :tabe ~/.vimrc<CR>
 
+set pastetoggle=<Leader>p
 
+set ttimeout
+set ttimeoutlen=100
 
+nnoremap <Leader>qa :qa!<CR>
+nnoremap <Leader>q :NERDTreeClose<CR>:q!<CR>
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>ss :w !sudo tee %<CR>
+nnoremap <Leader>ff :FufFile<CR>
+nnoremap <Leader>fb :FufBuffer<CR>
+let $JS_CMD='nodejs'
 
+imap jj <Esc>:w<CR>
+imap rr <Esc>:w<CR><Leader>rb
 
-
-
-
-
-
-
-
-
-
-
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif "`""'")

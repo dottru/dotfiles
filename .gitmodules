@@ -16,3 +16,12 @@
 [submodule "vim/bundle/jshint"]
 	path = vim/bundle/jshint
 	url = https://github.com/wookiehangover/jshint.vim
+[submodule "vim/bundle/minibufexpl"]
+	path = vim/bundle/minibufexpl
+	url = https://github.com/fholgado/minibufexpl.vim
+[submodule "vim/bundle/fuzzyfinder"]
+	path = vim/bundle/fuzzyfinder
+	url = https://github.com/vim-scripts/FuzzyFinder
+[submodule "vim/bundle/libl9"]
+	path = vim/bundle/libl9
+	url = https://github.com/vim-scripts/L9
