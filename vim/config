@@ -1,5 +1,12 @@
 execute pathogen#infect()
 
+set tags=./tags; ",tags,.vim/tags
+
+let g:easytags_dynamic_files = 1
+let g:easytags_file = '~/.vim/tags'
+let g:easytags_autorecurse = 1
+let g:easytags_events = ['BufWritePost']
+
 set number
 set hidden
 
@@ -43,8 +50,9 @@ nnoremap <Leader>s  :source %<CR>
 nnoremap <Leader>rb :!bash %<CR>
 nnoremap <Leader>jj :!node %<CR>
 
+nnoremap <Leader>rt :exec ReadTags()<CR>
 nnoremap <Leader>v :tabe ~/.vimrc<CR>
-
+let g:syntastic_always_populate_loc_list=1
 set pastetoggle=<Leader>p
 
 set ttimeout
@@ -91,7 +99,16 @@ let g:miniBufExplModSelTarget = 1
 "let g:miniBufExplAutoStart = 0
 "let g:miniBufExplBuffersNeeded = 0
 
+
+
 autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
      \ endif "`""'")
+
+au BufWritePost *.c,*.cpp,*.h,*.js,*.py,*.sh silent! !ctags -R &
+
+
+
+
+

@@ -19,6 +19,7 @@ lib64
 *.swp
 # Installer logs
 pip-log.txt
+tags
 
 # Unit test / coverage reports
 .coverage
@@ -34,3 +35,4 @@ nosetests.xml
 .pydevproject
 vim/autoload
 vim/vim
+*.netrwhist

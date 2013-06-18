@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# TODO: auto-update ctags
+#     : auto-gen .srclist for new users
+
+
 . scripts/common.sh
 
 
@@ -29,6 +33,9 @@ function VariableDefs () {
 	BAK=/tmp/script_backups
 }
 
+function CtagSetup () {
+  install exuberant-ctags
+}
 function JSHintSetup () {
   Print "Installing jshint."
   sudo npm install jshint -g

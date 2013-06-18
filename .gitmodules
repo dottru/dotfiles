@@ -35,7 +35,7 @@
 	path = vim/bundle/fugitive
 	url = http://github.com/tpope/vim-fugitive
 [submodule "vim/bundle/zoomwin"]
-	path = vim/bundle/zoomwin
+  path = vim/bundle/zoomwin
 	url = http://github.com/vim-scripts/ZoomWin
 [submodule "vim/bundle/tlib"]
 	path = vim/bundle/tlib
@@ -46,3 +46,9 @@
 [submodule "vim/bundle/add-mwutil"]
 	path = vim/bundle/add-mwutil
 	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
+  url = https://github.com/scrooloose/syntastic.git
+[submodule "vim/bundle/jshint"]
+  path = vim/bundle/jshint
+  url = https://github.com/sleistner/vim-jshint
