@@ -52,3 +52,9 @@
 [submodule "vim/bundle/jshint"]
   path = vim/bundle/jshint
   url = https://github.com/sleistner/vim-jshint
+[submodule "vim/bundle/tagbar"]
+	path = vim/bundle/tagbar
+	url = git://github.com/majutsushi/tagbar
+[submodule "vim/bundle/autotag"]
+	path = vim/bundle/autotag
+	url = git://github.com/vim-scripts/AutoTag.git
