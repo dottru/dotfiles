@@ -13,9 +13,6 @@
 [submodule "vim/bundle/autoclose"]
 	path = vim/bundle/autoclose
 	url = https://github.com/Townk/vim-autoclose
-[submodule "vim/bundle/jshint"]
-	path = vim/bundle/jshint
-	url = https://github.com/wookiehangover/jshint.vim
 [submodule "vim/bundle/libl9"]
 	path = vim/bundle/libl9
 	url = https://github.com/vim-scripts/L9
@@ -40,12 +37,12 @@
 [submodule "vim/bundle/zoomwin"]
 	path = vim/bundle/zoomwin
 	url = http://github.com/vim-scripts/ZoomWin
+[submodule "vim/bundle/tlib"]
+	path = vim/bundle/tlib
+  url = https://github.com/tomtom/tlib_vim.git
 [submodule "vim/bundle/snipmate"]
 	path = vim/bundle/snipmate
 	url = https://github.com/garbas/vim-snipmate
 [submodule "vim/bundle/add-mwutil"]
 	path = vim/bundle/add-mwutil
 	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
-[submodule "vim/bundle/tlib"]
-	path = vim/bundle/tlib
-	url = https://github.com/tomtom/tlib_vim.git

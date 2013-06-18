@@ -2,6 +2,10 @@
 
 . scripts/common.sh
 
+
+# /funclW"nyWV/^}"kb"by:tabe kdnkb.shp\w
+
+
 function VariableDefs () {
 	VIMDIR=$HOME/.vim
 	VIMRC=$HOME/.vimrc
@@ -25,8 +29,13 @@ function VariableDefs () {
 	BAK=/tmp/script_backups
 }
 
+function JSHintSetup () {
+  Print "Installing jshint."
+  sudo npm install jshint -g
+}
+
 function VimSetup () {
-	Title "Symlinking vim settings."
+	Title "Symlinking vim settings.";
 	SymLink $DF/vim/config $VIMRC 
 	SymLink $DF/vim $VIMDIR
 
@@ -34,6 +43,8 @@ function VimSetup () {
 	p="pathogen"
 	MkDir $VIMDIR/autoload
 	SymLink $VIMDIR/bundle/$p/autoload/$p.vim $VIMDIR/autoload/$p.vim
+  
+  Confirmation "Install JSHint" JSHintSetup;
 }
 
 function GitSetup () {
@@ -79,8 +90,15 @@ function FishSetup () {
 	#cat ./ec2_vars.sh >> ~/.bashrc # bashrc conf
 #}
 
+function MiscSetup () {
+  Print "Fixing nodejs sym link."
+  SudoSymLink `which nodejs` /usr/bin/node;
+}
+
 function MakeChanges () {
-	VimSetup;
+	MiscSetup; 
+  
+  VimSetup;
 
 	#GitSetup;
 
@@ -98,7 +116,8 @@ function Main () {
 
 	Print "Home    --  $HOME | VIM    --  $VIMDIR";
 	Print "CFGs    --  $DF | VI RC  --  $VIMRC";
-  Title "Setup will destroy your existing dotfiles. Use carefully."; NL;
+  
+  Section "Setup will destroy your existing dotfiles. Use carefully.";
   
   Confirmation "Continue setup" MakeChanges;
 }

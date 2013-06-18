@@ -41,6 +41,7 @@ nnoremap <Leader>e :NERDTreeToggle<CR>
 nnoremap <Leader>nc :NERDTreeClose<CR>
 nnoremap <Leader>s  :source %<CR>
 nnoremap <Leader>rb :!bash %<CR>
+nnoremap <Leader>jj :!node %<CR>
 
 nnoremap <Leader>v :tabe ~/.vimrc<CR>
 
@@ -49,16 +50,46 @@ set pastetoggle=<Leader>p
 set ttimeout
 set ttimeoutlen=100
 
+function! SaveNow() 
+  :NERDTreeClose
+  :w!
+endfunction
+
+function! QuitNow() 
+  :NERDTreeClose
+  :q!
+endfunction
+
 nnoremap <Leader>qa :qa!<CR>
-nnoremap <Leader>q :NERDTreeClose<CR>:q!<CR>
-nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :exec QuitNow()<CR>
+nnoremap <Leader>w :exec SaveNow()<CR>
 nnoremap <Leader>ss :w !sudo tee %<CR>
 nnoremap <Leader>ff :FufFile<CR>
 nnoremap <Leader>fb :FufBuffer<CR>
+nnoremap <Leader>p :CtrlPMixed<CR>
+
+nnoremap <Leader>h :call pathogen#helptags()<CR>
+
+nnoremap <Leader>gg :Gstatus<CR>
+
+"|   q[a-z] *MISC* q to record a macro to $id
+"|   let @[a-z] = 'contents'; to define a macro
+"|   Control-R Control-R $id to paste macro as is
+"|   " [$id] y to yank into reg $id
+"|   Control-R [a-z] to paste a reg
+
 let $JS_CMD='nodejs'
+let mapleader = ","
 
 imap jj <Esc>:w<CR>
 imap rr <Esc>:w<CR><Leader>rb
+
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1 
+"let g:miniBufExplAutoStart = 0
+"let g:miniBufExplBuffersNeeded = 0
 
 autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |

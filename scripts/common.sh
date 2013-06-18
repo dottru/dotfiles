@@ -13,6 +13,12 @@ function Remove () {
 	rm -rf $1
 }
 
+function SudoSymLink () {
+	sudo rm -rf $2;
+	
+	Print "Symbolic linking [ $1 ] ==> [ $2 ]";
+	sudo ln -s $1 $2;
+}
 function SymLink () {
 	Remove $2;
 	
@@ -56,9 +62,8 @@ function Confirmation () {
 	NL;
 
 	if [[ $REPLY =~	^[Yy]$ ]]; then
-    Print "Continuing..."
 		RES=$($2);
-		Print $RES;
+		Print "RES - $RES | FUN $2";
 	else
 		Print "Cancelled."
 	fi

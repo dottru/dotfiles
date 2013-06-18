@@ -4,6 +4,7 @@ console.log(' Initialising github. ');
 var repl = require('repl').start(),
 	mods = ["os", "fs", "github"];
 
+var Github = require('github');
 
 var InitHub = module.exports = function(user, pass) {
 	this.hub = new Github({
@@ -11,8 +12,6 @@ var InitHub = module.exports = function(user, pass) {
 		version: "3.0.0",
 		// optional
 		timeout: 5000
-		#, username: user,
-		#password: pass
 	});
 
 	this.keyfile = "~/.ssh/id_rsa.pub";
@@ -29,4 +28,6 @@ InitHub.prototype = {
 	}
 };
 
-repl.context['hub'] = new InitHub('jmkogut','lolhax12#');
+repl.context['git'] = new InitHub('jmkogut','lolhax12#');
+
+
