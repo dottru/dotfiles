@@ -99,16 +99,8 @@ let g:miniBufExplModSelTarget = 1
 "let g:miniBufExplAutoStart = 0
 "let g:miniBufExplBuffersNeeded = 0
 
-
-
-autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif "`""'")
-
-au BufWritePost *.c,*.cpp,*.h,*.js,*.py,*.sh silent! !ctags -R &
-
-
-
-
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
 
