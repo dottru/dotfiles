@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export TMP=/tmp
+
 function Print () {
 	echo -e $@;
 }
