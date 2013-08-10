@@ -8,7 +8,13 @@ RAWURI="https://raw.github.com/$REPO/$BRANCH/"
 GH_URI="git://github.com/$REPO.git"
 
 cd ~
-sudo aptitude install git
+
+echo "Installing git."
+sudo aptitude install -y git
+
+echo "Cloning $GH_URI."
 git clone $GH_URI
+
+echo "Running bootstrap."
 cd dotfiles
 ./setup.sh
