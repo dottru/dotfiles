@@ -2,71 +2,94 @@
 
 export TMP=/tmp
 
-function Print () {
-	echo -e $@;
+
+# Term width "-" line (tput cols wide)
+function sep () { printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -; }
+
+function pf () { printf "$@"; }      # printf
+function NL ()    { pf "\n"; }       # newline
+function SP ()    { pf " - "; }      # single sep
+function msg () { pf "%s\n" "$@"; }  # msg printer
+function justi () {                  # text justifier
+  pf "%10s :: %-20s" "$1" "$2";
 }
 
-function NL () { Print "\n"; }
+# Installs utils via apt
+function Install () {
+	msg "Installing $@...";
+	sudo aptitude -y install "$@";
+}
 
-function Install () { Print "Installing $@..."; sudo aptitude -y install $@; }
-
+# Removes items from filesystem
 function Remove () {
-	Print "Permanently deleting $1...";
-	rm -rf $1
+	msg "Permanently deleting $1...";
+	rm -rf $1;
 }
 
 function SudoSymLink () {
-	sudo rm -rf $2;
-	
-	Print "Symbolic linking [ $1 ] ==> [ $2 ]";
+	RemoveIfExists $2;
+
+	msg "Symbolic linking [ $1 ] ==> [ $2 ]";
 	sudo ln -s $1 $2;
 }
+
+
+# Checks for existence before removal.
+function RemoveIfExists () {
+  msg "Checking if $1 exists...";
+  if [ -e $1 ]; then
+    Remove $1;
+  fi
+
+  if [ -L $1 ]; then
+    Remove $1;
+  fi
+}
+
+
 function SymLink () {
-	Remove $2;
+	#msg "Attempting to symlink $1 to $2"
+	RemoveIfExists $2;
 	
-	Print "Symbolic linking [ $1 ] ==> [ $2 ]";
+	msg "Symbolic linking [ $1 ] ==> [ $2 ]";
 	ln -s $1 $2;
 }
 
-SEP="======================="
-function Seperator () {
-  Print "\n$SEP\n$@";
-}
-
 function Title () {
-	Print "$@";
-	Seperator;
+  msg "$@"; sep;
 }
 
 function Section() {
-	Seperator;
-	Print $@;
-	Seperator "\n";
+  sep;
+  msg "$@";
+  sep; NL;
 }
 
 function ReMake () {
-	Print "Re-creating $1"; Remove $1;
+	msg "Re-creating $1";
+	Remove $1;
 	MkDir $1;
 }
 
 function MkDir () {
 	if [ -d $@ ]; then
-		Print "Directory [ $@ ] already exists";
+		msg "Directory [ $@ ] already exists";
 	else
-		Print "Creating directory [ $@ ]";
+		msg "Creating directory [ $@ ]";
 		mkdir -p $1;
 	fi
 }
 
 function Confirmation () {
+
 	NL;
 	read -p "$1? [y/N] " -n 1 -r;
 	NL;
 
 	if [[ $REPLY =~	^[Yy]$ ]]; then
 		RES=$($2);
-		Print "RES - $RES | FUN $2";
+		msg "RES - $RES | FUN $2";
 	else
-		Print "Cancelled."
+		msg "Cancelled."
 	fi
 }
