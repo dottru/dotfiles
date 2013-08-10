@@ -5,7 +5,7 @@ BRANCH="master"
 BOOTSTRAP="http_bs.sh"
 SETUP="setup.sh"
 RAWURI="https://raw.github.com/$REPO/$BRANCH/"
-GH_URI="git://github.com/$REPO.git"
+GH_URI="https://github.com/$REPO.git"
 
 cd ~
 
