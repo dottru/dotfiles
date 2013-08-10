@@ -1,6 +1,6 @@
 #!/usr/bn/env bash
 
-REPO=:"jmkogut/dotfiles"
+REPO="jmkogut/dotfiles"
 BRANCH="master"
 BOOTSTRAP="http_bs.sh"
 SETUP="setup.sh"
