@@ -84,7 +84,7 @@ function! QuitNow()
   :q!
 endfunction
 
-
+" Why in the fuck did I make these.
 imap jj <Esc>ja
 imap kk <Esc>ja
 imap rr <Esc>:w<CR><Leader>rb
