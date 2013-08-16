@@ -10,7 +10,7 @@ GH_URI="https://github.com/$REPO.git"
 cd ~
 
 echo "Installing git."
-sudo aptitude install -y git
+sudo pacman -S git
 
 echo "Cloning $GH_URI."
 git clone $GH_URI

@@ -17,7 +17,7 @@ function justi () {                  # text justifier
 # Installs utils via apt
 function Install () {
 	msg "Installing $@...";
-	sudo aptitude -y install "$@";
+	sudo pacman -S "$@";
 }
 
 # Removes items from filesystem

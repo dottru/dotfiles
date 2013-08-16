@@ -73,3 +73,6 @@
 [submodule "win32/solarised"]
 	path = win32/solarised
 	url = https://github.com/altercation/solarized.git
+[submodule "ohmyfish"]
+	path = ohmyfish
+	url = git://github.com/bpinto/oh-my-fish.git
