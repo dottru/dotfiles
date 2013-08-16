@@ -1,0 +1,7 @@
+if test -d $HOME/.rbenv/bin
+  set PATH $HOME/.rbenv/bin $PATH
+end
+
+if test -d $HOME/.rbenv/shims
+  set PATH $HOME/.rbenv/shims $PATH
+end

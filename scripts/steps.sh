@@ -12,6 +12,8 @@ function Main () {
   
   #Confirmation "Configure VIM" VimSetup;
  VimSetup;
+ GitSetup;
+ FishSetup;
 }
 
 function VimSetup () {
@@ -60,6 +62,7 @@ function VariableDefs () {
 	# labels
 	ID=`whoami`@`hostname`;
 	SEP="========================="
+  CFG=$HOME/.config
 
 	# Old unreiable method of testing. It found
 	# the script loc and not the one I wanted
@@ -91,8 +94,6 @@ function JSHintSetup () {
 function GitSetup () {
 	Title "Linking git config."
 	SymLink $DF/gitconfig $HOME/.gitconfig
-	Title "Asking git to cache user credentials..."
-	git config --global credential.helper 'cache --timeout=360000'
 }
 
 function SSHSetup () {
@@ -121,7 +122,12 @@ function FishSetup () {
 	msg "Default shell changed to 'fish' shell."
 	msg " * Reset to bash with [ chsh -s `whereis bash` ] *"
 	chsh -s /usr/bin/fish
-	# TODO: add fish config file
+
+  # sym fish config
+  FISH=$CFG/fish
+  MkDir $FISH
+  FISH=$FISH/config.fish
+  SymLink $DF/fish.config $FISH
 }
 
 #function MainEC2 () {

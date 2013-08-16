@@ -5,7 +5,7 @@ execute pathogen#infect()
 let g:neocomplcache_enable_at_startup = 1
 
 " Leader is easier as a backslash
-" let mapleader = ","
+let mapleader = ","
 
 " TODO - tweak the tagging aspect of v
 set tags=./tags,.vim/tags
@@ -61,6 +61,7 @@ nnoremap <Leader>8 :8b<CR>
 nnoremap <Leader>9 :9b<CR>
 nnoremap <Leader>0 :10b<CR>
 
+nnoremap <Leader>d :Errors<CR>                " lists buffers
 nnoremap <Leader>b :ls<CR>                " lists buffers
 nnoremap <Leader>e :NERDTreeToggle<CR>    " file explorer>
 nnoremap <Leader>s  :source %<CR>         " source cur file
@@ -68,9 +69,17 @@ nnoremap <Leader>rb :!bash %<CR>          " run in bash
 nnoremap <Leader>ii :!node %<CR>          " run in node
 nnoremap <Leader>rt :exec ReadTags()<CR>  " read new tags
 nnoremap <Leader>v :tabe ~/.vimrc<CR>     " edit vimrc
+nnoremap <Leader>c :close<CR>
+nnoremap <Space> :
+
+imap <Leader><Leader> <Esc>:update<CR>
+nnoremap <Leader><Leader> :update<CR>
 
 " syntastic opt
 let g:syntastic_always_populate_loc_list=1
+let g:syntastic_echo_current_error=1
+let g:syntastic_check_on_open=1
+let g:syntastic_auto_loc_list=1
 
 " toggle paste
 set pastetoggle=<Leader>p
@@ -85,11 +94,12 @@ function! QuitNow()
 endfunction
 
 " Why in the fuck did I make these.
-imap jj <Esc>ja
-imap kk <Esc>ja
-imap rr <Esc>:w<CR><Leader>rb
+"imap jj <Esc>ja
+"imap kk <Esc>ja
+"imap rr <Esc>:w<CR><Leader>rb
 
 " Find mod (crtlp) control f or leaderi/ctrl f in normal
+" r
 imap <C-F> <Esc>:CtrlPMixed<CR> 
 nnoremap <Leader>f :CtrlPMixed<CR>
 nnoremap <C-f> :CtrlPMixed<CR>
@@ -140,7 +150,7 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 
-set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
+" set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
 
 nnoremap <Leader>l :TaskList<CR>
 nnoremap <Leader>x :Bclose<CR>
