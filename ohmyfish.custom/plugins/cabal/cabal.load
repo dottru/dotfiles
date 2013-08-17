@@ -1,4 +1,2 @@
 ### Main program
-if test -d /usr/bin/cabal
-  set PATH ./.cabal/bin $PATH
-end
+set PATH ./.cabal/bin $PATH
