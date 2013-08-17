@@ -1,0 +1,9 @@
+function install
+  echo Installing package "$argv";
+  sudo pacman -S $argv;
+end
+
+function search
+  echo Searching packages for "$argv";
+  sudo pacman -Ss $argv;
+end
