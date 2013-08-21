@@ -36,3 +36,4 @@ nosetests.xml
 vim/autoload
 vim/vim
 *.netrwhist
+ohmyfish/

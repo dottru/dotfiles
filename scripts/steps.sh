@@ -64,20 +64,6 @@ function VariableDefs () {
   ID=`whoami`@`hostname`;
   SEP="========================="
 
-  # Old unreiable method of testing. It found
-  # the script loc and not the one I wanted
-  #
-  # Script path discovery
-  #SCRIPT_PATH="${BASH_SOURCE[0]}";
-  #if ([ -h "${SCRIPT_PATH}" ]) then
-  #  while([ -h "${SCRIPT_PATH}" ]) do SCRIPT_PATH=`readlink "${SCRIPT_PATH}"`; done
-  #fi
-  #pushd . > /dev/null
-  #cd `dirname ${SCRIPT_PATH}` > /dev/null
-  #
-  #DF=`pwd`;
-  #popd  > /dev/null
-  # / script path discovery
 }
 
 function CtagSetup () {
@@ -92,8 +78,8 @@ function JSHintSetup () {
 
 
 function GitSetup () {
-  Title "Linking git config."
-  SymLink $DF/gitconfig $HOME/.gitconfig
+	Title "Linking git config."
+	SymLink $DF/gitconfig $HOME/.gitconfig
 }
 
 function SSHSetup () {
@@ -125,9 +111,9 @@ function FishSetup () {
 
   # sym fish config
   FISH=$CFG/fish
-  MkDir $FISH
+  SymLink $DF/fish $FISH
   FISH=$FISH/config.fish
-  SymLink $DF/fish.config $FISH
+  SymLink $DF/fish/fish.config $FISH
 }
 
 #function MainEC2 () {
