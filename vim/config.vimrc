@@ -40,6 +40,7 @@ colorscheme solarized
 
 "set incsearch
 "set noundofile
+set hlsearch
 
 set backspace
 set scrolloff=10
