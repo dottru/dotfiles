@@ -9,4 +9,4 @@ Simply run the following snippet in bash or (for customisation), checkout jmkogu
 INSTALL
 -------
 
-bash <(wget -qO- https://raw.github.com/jmkogut/dotfiles/master/bootstrap.sh)
+bash <(wget -qO- https://raw.github.com/jmkogut/dotfiles/archlinux/bootstrap.sh)
