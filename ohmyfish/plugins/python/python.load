@@ -1,4 +1,0 @@
-if test -d /usr/local/share/python
-  set PATH /usr/local/share/python $PATH
-end
-
