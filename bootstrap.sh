@@ -1,6 +1,7 @@
 #!/usr/bn/env bash
 
 REPO="jmkogut/dotfiles"
+BRANCH="archlinux"
 BRANCH="master"
 BOOTSTRAP="http_bs.sh"
 SETUP="setup.sh"
@@ -13,7 +14,7 @@ echo "Installing git."
 sudo pacman -S git
 
 echo "Cloning $GH_URI."
-git clone $GH_URI
+git clone -b $BRANCH --single-branch $GH_URI
 
 echo "Running bootstrap."
 cd dotfiles
