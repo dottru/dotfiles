@@ -13,7 +13,10 @@ install () {
 
 cd ~
 
-echo "Installing pre-reqs."
+echo "Updating package manager."
+sudo pacman -Ssy
+
+echo "Installing git/wget/tmux."
 install git
 install wget
 install tmux
