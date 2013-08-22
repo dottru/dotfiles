@@ -20,6 +20,8 @@ echo "Installing git/wget/tmux."
 install git
 install wget
 install tmux
+install tree
+install htop
 
 echo "Cloning $GH_URI."
 git clone $GH_URI
