@@ -101,6 +101,11 @@ function Pause () {
   read -p "[Enter to continue...]";
 }
 
+function AsRoot () {
+  msg "Elevating user privileges..."
+  sudo bash $SCRIPT;
+}
+
 # Whether or not a group exists
 function isGroup () {
   RES=$(egrep -i "^$1" /etc/group)
