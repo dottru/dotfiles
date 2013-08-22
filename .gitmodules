@@ -76,3 +76,6 @@
 [submodule "ohmyfish"]
 	path = ohmyfish
 	url = git://github.com/bpinto/oh-my-fish.git
+[submodule "vim/bundle/conque"]
+	path = vim/bundle/conque
+	url = https://github.com/vim-scripts/Conque-Shell

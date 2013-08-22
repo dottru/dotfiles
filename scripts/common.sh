@@ -81,15 +81,122 @@ function MkDir () {
 }
 
 function Confirmation () {
+  PROMPT=$1; DOIF=$2;
 
-	NL;
-	read -p "$1? [y/N] " -n 1 -r;
+  NL;
+	read -p "$PROMPT? [y/N] " -n 1 -r;
 	NL;
 
 	if [[ $REPLY =~	^[Yy]$ ]]; then
-		RES=$($2);
-		msg "RES - $RES | FUN $2";
+		$DOIF;
+    return 0;
 	else
 		msg "Cancelled."
+    return 1;
 	fi
 }
+
+# Pauses for user imput
+function Pause () {
+  read -p "[Enter to continue...]";
+}
+
+# Whether or not a group exists
+function isGroup () {
+  RES=$(egrep -i "^$1" /etc/group)
+  if [[ $? == 0 ]]; then
+    echo "a valid group"
+    return 0; # zero is success
+  else 
+    echo "not a group"
+    return 1; # fail
+  fi;
+}
+
+function DidSucceed () {
+  R=$1; POSI=$2; NEGI=$3;
+  if [[ $R -eq 0 ]]; then
+    POSI;
+  else
+    NEGI;
+  fi;
+
+  return $R;
+}
+
+function UID () {
+  echo `id -u`;
+}
+
+
+function Err () {
+  echo "Error: ${$@}.";
+}
+
+function PUID () {
+  echo "UID: $(UID).";
+}
+
+# Script that throws warning if not root.
+function RequireRoot () {
+  DO=$1; FAIL=$2;
+
+  if [[ $(UID) -ne 0 ]]; then
+    $FAIL;
+    return 1;
+  else
+    $DO;
+    return 0;
+  fi;
+}
+
+function NeedsRoot () {
+  echo "This script requires elevated privileges. Exiting."
+  Pause;
+}
+
+# Full file paths, no relative ones.
+function FullPath() {
+  echo `readlink -f $0`;
+}
+
+### =======================
+### Brainstorming area
+### =======================
+
+# # function Exception () {
+# #   echo $@;
+# #   return 1;
+# # }
+# 
+# # function State () {
+# #   if [[ $? -eq 0 ]]; then
+# #     echo "Success."; return 0;
+# #   else
+# #     echo "Failure."; return 1;
+# #   fi;
+# # }
+# 
+# # Bash test exit codes
+# # function TestBool () { GRP=$1;
+# #   isGroup=$(eval isGroup $GRP);
+# #   msg "$GRP is ${isGroup} || ($(State))"
+# # }
+
+# # Tests last exit code
+# function DidPass () {
+#   # check for passing grade
+#   if [[ $? -eq 0 ]]; then
+#     echo "${GROUP} added to sudoers.";
+#     exit 0;
+#   else
+#     echo "Could not add ${GROUP} to sudoers."
+#     exit 1;
+#   fi;
+# }
+
+# SudoBash () {
+#   sudo bash <<EOF
+#   # root shit here.
+#   EOF;
+# }

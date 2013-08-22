@@ -6,6 +6,8 @@
 
 . scripts/common.sh
 . scripts/steps.sh
+. scripts/hostname.sh
+. scripts/add_user.sh
 
 Main;
 
