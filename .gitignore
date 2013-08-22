@@ -37,3 +37,4 @@ vim/autoload
 vim/vim
 *.netrwhist
 ohmyfish/
+passwd-s3fs

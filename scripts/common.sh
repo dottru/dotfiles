@@ -80,9 +80,7 @@ export TMP=/tmp
   }
 
   function SymLink () {
-    #msg "Attempting to symlink $1 to $2"
     RemoveIfExists $2;
-    
     msg "Symbolic linking [ $1 ] ==> [ $2 ]";
     ln -s $1 $2;
   }
@@ -104,6 +102,8 @@ export TMP=/tmp
 # }}
 
 # {{ Control flow
+  function Pause () { read -p "[Enter to continue...]"; }
+
   function Confirmation () {
     PROMPT=$1; DOIF=$2;
 
@@ -118,11 +118,6 @@ export TMP=/tmp
       msg "Cancelled."
       return 1;
     fi
-  }
-
-  # Pauses for user imput
-  function Pause () {
-    read -p "[Enter to continue...]";
   }
 
   function DidSucceed () {
@@ -162,12 +157,28 @@ export TMP=/tmp
 # }}
 
 # {{ File encryption
-  function Encrypt () {
-    SRC=$1;
-    cat $SRC | ccrypt > $SRC.crypt;
+  CRY=""
+
+  function IgnoreFile () {
+    # if src not in gitignore, add it
+    GITI=".gitignore"
+    SEARCH=`egrep -i "^$CRY" $GITI`
+
+    if [[ -z $SEARCH ]]; then
+      msg "Adding $CRY to $GITI"
+      echo "$CRY" >> $GITI;
+    else
+      msg "File is already in $GITI"
+    fi;
   }
 
-  # Decrypts files made by Encrypt
+  function Encrypt () {
+    SRC=$1; CRY=$SRC;
+    cat $SRC | ccrypt > $SRC.crypt;
+
+    Confirmation "Add source to git ignore list? " IgnoreFile
+  }
+
   function Decrypt () {
     SRC=$1;
 
@@ -175,6 +186,9 @@ export TMP=/tmp
     extension="${filename##*.}"
     DEST="${filename%.*}"
 
-    ccrypt -d -c $SRC > $DEST;
+    cp $SRC $DEST;
+    ccrypt -d $DEST;
+
+    msg "$DEST decrypted."
   }
 # }}

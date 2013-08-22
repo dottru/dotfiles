@@ -16,6 +16,11 @@ Main;
 # Create new user account
 . scripts/add_user.sh
 
+# Mount S3 bucket
+. scripts/s3-bucket.sh
+
+# Generate / export ssh keys
+ . scripts/ssh-keys.sh
+
 msg "Setup complete.";
 Pause;
-
