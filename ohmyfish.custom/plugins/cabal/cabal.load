@@ -1,2 +1,0 @@
-### Main program
-set PATH ./.cabal/bin $PATH
