@@ -1,25 +1,32 @@
 #!/usr/bin/env bash
 
-clear;
-
 . scripts/common.sh
-set -e; # set -x; # debugging
 
-NEW="awshost"
+NEW="awshost";
 
 function SetHostname () {
-  msg "Setting hostname to '$NEW'..."
-  hostnamectl set-hostname "$NEW" msg "Hostname set. Please re-log to see your changes."
+  msg "Setting hostname to '$NEW'...";
+  hostnamectl set-hostname "$NEW";
+  msg "Hostname set. Please re-log to see your changes.";
   Pause;
+
   exit 0;
 }
 
 function Begin () {
-  read -p "Enter your new hostname: " -e NEW
-  Confirmation "Is [$NEW] correct?" SetHostname
-}
-function AsRoot () { msg "Elevating user privileges..."
-  sudo bash $0;
+
+  msg "Hostname"
+  msg "================="
+  NL;
+  msg "Currently: `cat /etc/hostname`"
+  NL;
+
+  read -p "Enter your new hostname: " -e NEW;
+  Confirmation "Is [$NEW] correct?" SetHostname;
 }
 
-RequireRoot Begin AsRoot
+function DidConfirm () {
+  RequireRoot Begin AsRoot;
+}
+
+Confirmation "Do you want to change the hostname from ${GetFQDN}?" DidConfirm

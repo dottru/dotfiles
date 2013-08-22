@@ -105,15 +105,15 @@ function SudoSetup () {
 function FishSetup () {
   Section "Shell customisations"
   Install "community/fish"
+
+  chsh -s /usr/bin/fish # TODO: confirm do
+
   msg "Default shell changed to 'fish' shell."
   msg " * Reset to bash with [ chsh -s `whereis bash` ] *"
-  chsh -s /usr/bin/fish # TODO: confirm do
 
   # sym fish config
   FISH=$CFG/fish
   SymLink $DF/fish $FISH
-  FISH=$FISH/config.fish
-  SymLink $DF/fish/fish.config $FISH
 }
 
 #function MainEC2 () {

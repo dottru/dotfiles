@@ -20,6 +20,15 @@ function Install () {
 	sudo pacman -S "$@";
 }
 
+# Prints full hostname
+function GetFQDN () { echo `cat /etc/hostname`; }
+
+# Elevate to root
+function AsRoot () {
+  msg "Elevating user privileges...";
+  sudo bash $0;
+}
+
 # Removes items from filesystem
 function Remove () {
 	msg "Permanently deleting $1...";

@@ -2,7 +2,7 @@
 
 . scripts/common.sh
 
-set -e; set -x; # Exit on failure.
+#set -e; set -x; # Exit on failure.
 
 # Helper method for adding a name to sudoers
 function addToSudo () {
