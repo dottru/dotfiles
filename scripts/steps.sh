@@ -24,6 +24,8 @@ function Main () {
 
  FishSetup;
  Pause;
+
+ . scripts/ssh-keys.sh
 }
 
 function VimSetup () {
