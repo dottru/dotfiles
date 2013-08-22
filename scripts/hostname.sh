@@ -9,8 +9,6 @@ function SetHostname () {
   hostnamectl set-hostname "$NEW";
   msg "Hostname set. Please re-log to see your changes.";
   Pause;
-
-  exit 0;
 }
 
 function Begin () {

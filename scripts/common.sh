@@ -17,7 +17,7 @@ function justi () {                  # text justifier
 # Installs utils via apt
 function Install () {
 	msg "Installing $@...";
-	sudo pacman -S "$@";
+	sudo pacman --noconfirm -S "$@";
 }
 
 # Prints full hostname

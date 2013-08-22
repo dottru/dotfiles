@@ -3,6 +3,7 @@
 # TODO: auto-update ctags
 #     : auto-gen .srclist for new users
 
+clear;
 
 . scripts/common.sh
 . scripts/steps.sh

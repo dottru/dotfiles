@@ -9,11 +9,21 @@ function Main () {
   justi "VIM" "$VIMDIR"; justi "VIMRC" "$VIMRC"; NL;
   
   Section "Setup will destroy your existing dotfiles. Use carefully.";
+  msg "This repo is designed for use with fresh EC2 instances. As such,"
+  msg "it has absolutely no regard for data safety. It deletes things at random."
+  NL;
+
+  Pause;
   
   #Confirmation "Configure VIM" VimSetup;
  VimSetup;
+ Pause;
+
  GitSetup;
+ Pause;
+
  FishSetup;
+ Pause;
 }
 
 function VimSetup () {
@@ -78,6 +88,8 @@ function JSHintSetup () {
 
 
 function GitSetup () {
+Section "Git configuration";
+
 	Title "Linking git config."
 	SymLink $DF/gitconfig $HOME/.gitconfig
 }
