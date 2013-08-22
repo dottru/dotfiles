@@ -3,18 +3,19 @@
 # TODO: auto-update ctags
 #     : auto-gen .srclist for new users
 
+clear;
 
 . scripts/common.sh
 . scripts/steps.sh
-. scripts/hostname.sh
-. scripts/add_user.sh
 
 Main;
 
+# Set hostname
+. scripts/hostname.sh
 
-# Fun, but wtf sort of vim m,acro bs is this?
-# /func
-#lW"nyWV/^}"kb
-#"by:tabe kdnkb.sh
-#p\w
+# Create new user account
+. scripts/add_user.sh
+
+msg "Setup complete.";
+Pause;
 

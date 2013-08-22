@@ -17,7 +17,16 @@ function justi () {                  # text justifier
 # Installs utils via apt
 function Install () {
 	msg "Installing $@...";
-	sudo pacman -S "$@";
+	sudo pacman --noconfirm -S "$@";
+}
+
+# Prints full hostname
+function GetFQDN () { echo `cat /etc/hostname`; }
+
+# Elevate to root
+function AsRoot () {
+  msg "Elevating user privileges...";
+  sudo bash $0;
 }
 
 # Removes items from filesystem

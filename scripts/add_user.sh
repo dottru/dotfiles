@@ -2,8 +2,6 @@
 
 . scripts/common.sh
 
-set -e; set -x; # Exit on failure.
-
 # Helper method for adding a name to sudoers
 function addToSudo () {
   # Adds a user or group to /etc/sudoers
@@ -18,25 +16,22 @@ function addToSudo () {
   if [ -f $TMP ]; then
       msg "!!! SUDOERS IN USE !!!";
       Pause;
-      exit 1;
-  fi
+  else
+    cp $ORI $TMP;
+    echo $LINE >> $TMP;
+    visudo -c -f $TMP;
 
-  cp $ORI $TMP;
-  echo $LINE >> $TMP;
-  visudo -c -f $TMP;
+    # $? = most recent pipeline foreground exist status
+    if [ "$?" -eq "0" ]; then
+        msg "$GROUP added to sudoers!~"
+        cp $TMP $ORI;
+    else # TODO: log failure 
+        msg "Sudoer file modifications failed."
+        Pause;
+    fi;
 
-  # $? = most recent pipeline foreground exist status
-  if [ "$?" -eq "0" ]; then
-      msg "$GROUP added to sudoers!~"
-      cp $TMP $ORI;
-  else # TODO: log failure 
-      msg "Sudoer file modifications failed."
-      Pause;
-      exit 1;
+    rm -rf $TMP;
   fi;
-
-  rm -rf $TMP;
-  exit 0;
 }
 
 USERNAME="";
@@ -75,4 +70,8 @@ function AsRoot () {
   sudo bash $0;
 }
 
-RequireRoot UserSetup AsRoot;
+function Confirmed () {
+  RequireRoot UserSetup AsRoot;
+}
+
+Confirmation "Do you want to setup a new user account? " Confirmed
