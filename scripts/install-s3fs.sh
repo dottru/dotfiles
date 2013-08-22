@@ -10,6 +10,8 @@ function InstallS3FS () {
   sudo yaourt aur/s3fs
 
   msg "S3FS has been successfully installed."
+  msg "You need to reboot and do 'modprobe fuse' now"
+  msg "in order for the kernel module to work."
 }
 
 function ConfirmInstall () {
