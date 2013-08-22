@@ -23,8 +23,10 @@ install wget
 install tmux
 
 echo "Cloning $GH_URI."
-git clone -b $BRANCH --single-branch $GH_URI
+git clone $GH_URI
+cd dotfiles;
+git fetch origin
+git checkout --track origin/$BRANCH
 
 echo "Running bootstrap."
-cd dotfiles
 ./setup.sh
