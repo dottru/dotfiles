@@ -18,7 +18,7 @@ function Begin () {
   msg "Hostname"
   msg "================="
   NL;
-  msg "Currently: `cat /etc/hostname`"
+  msg "Currently: `GetFQDN`"
   NL;
 
   read -p "Enter your new hostname: " -e NEW;
@@ -29,4 +29,4 @@ function DidConfirm () {
   RequireRoot Begin AsRoot;
 }
 
-Confirmation "Do you want to change the hostname from ${GetFQDN}?" DidConfirm
+Confirmation "Do you want to change the hostname from `GetFQDN`?" DidConfirm
