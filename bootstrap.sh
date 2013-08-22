@@ -7,15 +7,15 @@ BOOTSTRAP="http_bs.sh"
 SETUP="setup.sh"
 RAWURI="https://raw.github.com/$REPO/$BRANCH/"
 GH_URI="https://github.com/$REPO.git"
-
+PKG="sudo pacman --noconfirm "
 install () {
-  pacman -Sy $*;
+  $PKG -Sy $*;
 }
 
 cd ~
 
 echo "Updating package manager."
-sudo pacman -Ssy
+$PKG -Ssy
 
 echo "Installing git/wget/tmux."
 install git
