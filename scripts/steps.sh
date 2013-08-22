@@ -125,6 +125,8 @@ function FishSetup () {
 
   # sym fish config
   FISH=$CFG/fish
+
+  RemoveIfExists $FISH;
   SymLink $DF/fish $FISH
 }
 
