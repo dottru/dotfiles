@@ -33,8 +33,5 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
-vim/autoload
-vim/vim
 *.netrwhist
-ohmyfish/
 passwd-s3fs
