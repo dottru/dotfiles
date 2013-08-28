@@ -1,10 +1,10 @@
-dotfiles
-========
+# dotfiles
 
-A new setup for the enthusiastic developer.
+Organised dotfiles for the intelligent developer.
 
-Simply run the following snippet in bash or (for customisation), checkout jmkogut/dotfiles then run ./setup.sh in that directory for a new user to check out the config.
+## Installation
 
+Simply run the following snippet in bash or (for customisation), checkout dottru/files then run `./setup.sh` in the repository to install.
 
 GENERIC INSTALL
 --------------
@@ -12,12 +12,11 @@ GENERIC INSTALL
 bash <(wget -qO- https://raw.github.com/jmkogut/dotfiles/master/bootstrap.sh)
 
 
+## Secrets
 
-
-Secrets
-----------------------------------------------------------
-
-If you spot personal or secret data, please report it
-https://help.github.com/articles/remove-sensitive-data
+If you spot personal or secret data, please [report it.](https://help.github.com/articles/remove-sensitive-data)
 
 ----------------------------------------------------------
+
+[dotfiles]:  https://github.com/dottru/dotfiles
+[showmarks]: https://github.com/juanpabloaj/ShowMarks

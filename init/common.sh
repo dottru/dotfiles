@@ -1,14 +1,9 @@
 #!/usr/bin/env bash
 
-export TMP=/tmp
 
 # {{ Text functions
   function sep () { printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -; }
 
-  function pf () { printf "$@"; }      # printf
-  function NL ()    { pf "\n"; }       # newline
-  function SP ()    { pf " - "; }      # single sep
-  function msg () { pf "%s\n" "$@"; }  # msg printer
   function justi () {                  # text justifier
     pf "%10s :: %-20s" "$1" "$2";
   }
