@@ -40,6 +40,7 @@ colorscheme solarized
 
 "set incsearch
 "set noundofile
+set hlsearch
 
 set backspace
 set scrolloff=10
@@ -61,15 +62,26 @@ nnoremap <Leader>8 :8b<CR>
 nnoremap <Leader>9 :9b<CR>
 nnoremap <Leader>0 :10b<CR>
 
+" list buffers
+nnoremap <Leader>l :ls<CR>
+imap    <Leader>l <Esc>:ls<CR>
+
 nnoremap <Leader>d :Errors<CR>                " lists buffers
 nnoremap <Leader>b :ls<CR>                " lists buffers
 nnoremap <Leader>e :NERDTreeToggle<CR>    " file explorer>
 nnoremap <Leader>s  :source %<CR>         " source cur file
 nnoremap <Leader>rb :!bash %<CR>          " run in bash
-nnoremap <Leader>ii :!node %<CR>          " run in node
-nnoremap <Leader>rt :exec ReadTags()<CR>  " read new tags
-nnoremap <Leader>v :tabe ~/.vimrc<CR>     " edit vimrc
-nnoremap <Leader>c :close<CR>
+
+
+nnoremap <Leader>bc :!bash -n %<CR>                   " run in bash
+nnoremap <Leader>bi :!bash --init-file %<CR>          " run in bash
+nnoremap <Leader>ii :!node %<CR>                      " run in node
+nnoremap <Leader>rt :exec ReadTags()<CR>              " read new tags
+nnoremap <Leader>v :tabe ~/.vimrc<CR>                 " edit vimrc
+nnoremap <Leader>c :bd<CR>                            " close current buffer with your eyes closed
+
+" leave space after this next cfg line empty
+" space be quicker to type than <Shift>;
 nnoremap <Space> :
 
 imap <Leader><Leader> <Esc>:update<CR>
@@ -152,7 +164,6 @@ map <C-l> <C-W>l
 
 " set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
 
-nnoremap <Leader>l :TaskList<CR>
 nnoremap <Leader>x :Bclose<CR>
 
 
