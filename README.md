@@ -20,10 +20,10 @@ bash <(wget -qO- https://raw.github.com/jmkogut/dotfiles/archlinux/bootstrap.sh)
 
 
 
-
+Secrets
 ----------------------------------------------------------
 
-If you spot secret data, please report it
+If you spot personal or secret data, please report it
 https://help.github.com/articles/remove-sensitive-data
 
 ----------------------------------------------------------
