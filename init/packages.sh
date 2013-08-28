@@ -12,3 +12,10 @@ case $DISTRO in
 	echo "Unknown distro. Exiting.";
 	exit 1;
 esac
+
+Section "Installing required packages."
+
+PkgInstall tmux
+PkgInstall vim
+PkgInstall tree
+PkgInstall htop

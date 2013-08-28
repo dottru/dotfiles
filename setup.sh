@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
-# TODO: auto-update ctags
-#     : auto-gen .srclist for new users
+echo "Installing a few required packages first.";
 
-clear;
+. init/pkgman.sh
+. init/packages.sh
+
+echo "Placing dotfies where they need to go.";
 
 . scripts/common.sh
 . scripts/steps.sh

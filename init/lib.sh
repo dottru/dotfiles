@@ -23,9 +23,3 @@ function MatchCase () {
 		shopt -u nocasematch;
 	fi;
 }
-
-function Err () { echo "Error: ${$@}."; }
-
-function Install () {
-	echo "$PKGMAN $_INST $@."
-}
