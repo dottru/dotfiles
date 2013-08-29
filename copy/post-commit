@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Auto push on commit
+echo "Gitting the pushizzle origin mastersizzle, you hear?";
+
+pushd ../;
+git push origin master;
+popd;
