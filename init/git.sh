@@ -14,13 +14,14 @@ Msg "Symlinking new gitconfig."
 ln -s `pwd`/link/gitconfig $GCFG;
 
 # Enable color in git
-echo "Configuring user info in git."
-git config --global --add color.ui true
-git config --global core.editor "vim"
+#echo "Configuring user info in git."
+#git config --global --add color.ui true
+#git config --global core.editor "vim"
 
-inp " Enter your git name} " && git config --global user.name "$REPLY"
-inp "Enter your git email} " && git config --global user.email "$REPLY"
+#inp " Enter your git name} " && git config --global user.name "$REPLY"
+#inp "Enter your git email} " && git config --global user.email "$REPLY"
 
+set -e 
 function AutoPush () {
   # Make it push on commit
   HOOK=".git/hooks/post-commit";
@@ -39,8 +40,11 @@ function AutoPush () {
   chmod +x $HOOK
   git init
   [ ! -z $GO ] && popd;
+
   echo "Git configuration completed..";
 }
 
 echo `AutoPush .`;
+echo `AutoPush ./link/vim`;
+
 inp "Press enter." && echo "Done.";
