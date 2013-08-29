@@ -15,7 +15,9 @@ esac
 
 Section "Installing required packages."
 
-PkgInstall tmux
-PkgInstall vim
-PkgInstall tree
-PkgInstall htop
+PkgInstall tmux   # for term multiplexing,
+PkgInstall vim    # for owning everyone
+PkgInstall tree   # for navigating dir trees
+PkgInstall htop   # for multiplexing
+PkgInstall ccrypt # for encryption
+PkgInstall ctags  # for tab completion

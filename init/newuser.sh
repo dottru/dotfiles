@@ -2,6 +2,18 @@
 
 . scripts/common.sh
 
+  " isGroup
+  function isGroup () {
+    RES=$(egrep -i "^$1" /etc/group)
+    if [[ $? == 0 ]]; then
+      echo "a valid group"
+      return 0; # zero is success
+    else 
+      echo "not a group"
+      return 1; # fail
+    fi;
+  }
+
 # Helper method for adding a name to sudoers
 function addToSudo () {
   # Adds a user or group to /etc/sudoers

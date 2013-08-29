@@ -23,3 +23,6 @@ function MatchCase () {
 		shopt -u nocasematch;
 	fi;
 }
+
+# Pause for input
+function Pause () { read -p "[Enter to continue...]"; }

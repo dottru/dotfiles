@@ -2,24 +2,20 @@
 
 echo "Installing a few required packages first.";
 
-. init/pkgman.sh
-. init/packages.sh
+. init/pkgman.sh   # Determines which pkg this sys uses
+. init/packages.sh # Installs various dev packages
 
 echo "Placing dotfies where they need to go.";
-
-. scripts/common.sh
-. scripts/steps.sh
-
-Main;
+. init/linker.sh # Links dotfiles to $HOME
 
 # Set hostname
-. scripts/hostname.sh
+. init/hostname.sh
 
 # Create new user account
-. scripts/add_user.sh
+. init/newuser.sh
 
 # Mount S3 bucket
-. scripts/s3-bucket.sh
+. init/s3-bucket.sh
 
 # Generate / export ssh keys
  . scripts/ssh-keys.sh

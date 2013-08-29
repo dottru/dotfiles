@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. scripts/common.sh
+. init/lib.sh
 
 NEW="awshost";
 

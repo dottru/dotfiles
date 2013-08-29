@@ -1,3 +1,9 @@
+#!/usr/bin/env node
+
+/**
+ * Needs a lot of work. TODO: fnish it
+ */
+
 console.log(' --------------- ');
 console.log(' Initialising github. ');
 
@@ -28,9 +34,9 @@ InitHub.prototype = {
 	}
 };
 
-repl.context.git = new InitHub('jmkogut','lolhax12#');
+repl.context.git = new InitHub('jmkogut','');
 
-var f = new InitHub('jmkogut','lolhax12#');
+var f = new InitHub('jmkogut','');
 f.upload( whatevs );
 
 
