@@ -7,4 +7,10 @@ clone dotfiles for 0 and non0
 update package index
 upgrade packages
 
-ALL TODOS DONE.
+## Latest
+
+So I just got a video torrented down on an ec2 instance, encoded it with libvpx (WebM) and
+streamed it live over HTTP, ala youtube. My next project will be a dynamic webapp to torrent things
+and stream them to you at your convenience.
+
+Here's a CLI way to grant access to your S3 buckets -- s3cmd setacl --acl-public --recursive $BUCKET
