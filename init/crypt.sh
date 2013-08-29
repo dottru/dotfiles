@@ -31,6 +31,11 @@ fi;
 
 export PASS=`cat "$PF"`;
 
+function Commit () {
+  git add "$GO";
+  git commit -m 'encrypted file'
+}
+
 ## {{ Crypt methods
 function Encrypt () {
   IN=$REQ; GO="${REQ}.cpt";
@@ -38,6 +43,7 @@ function Encrypt () {
 
   cat "$REQ" | ccrypt -e -E PASS > "$GO";
   Msg "Encrypted file available at [$GO].";
+  Confirmation "Would you like $GO committed to SCM?" Commit;
 }
 
 function Decrypt () {

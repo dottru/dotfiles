@@ -11,8 +11,8 @@
 
   function Backup () {
     if [ -f "$1" ]; then
-      mv "$1" /tmp;
       Msg "Old file [ $1 ] backed up to /tmp";
+      mv "$1" /tmp;
     fi;
   }
 
