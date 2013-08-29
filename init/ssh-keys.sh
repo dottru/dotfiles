@@ -12,7 +12,7 @@ function ExportKeys () {
 
   # SSH pubkey destination
   STORE="$HOME/dotfiles/host_keys"
-  KEYPUB="$STORE/`whoami`-at-`hostname -f`.pub"
+  KEYPUB="$STORE/`whoami`-at-`hostname`.pub"
 
   # If store exists, copy the pubkey over
   if [[ -d $STORE ]]; then
@@ -20,9 +20,10 @@ function ExportKeys () {
       Msg "Pub key spot is available."
       
       cp $PUB $KEYPUB;
-      cd store;
+      pushd $STORE;
       git commit -a -m 'Added key for `whoami`@`hostname`'
       git push origin master
+      popd;
 
       Msg "SSH keys saved to github repo.";
     else
@@ -45,7 +46,7 @@ function GenerateKey () {
 
 Section "SSH keys"
 Confirmation "Do you want to generate new SSH keys? " GenerateKey;
-Confirmation "Do you want to export your SSH keys to github? " ExportKeys;
+Confirmation "Do you want to export your SSH keys to github repo dottru/hostkeys? " ExportKeys;
 
 NL;
 Pause;

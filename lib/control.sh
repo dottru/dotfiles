@@ -9,6 +9,13 @@
     fi;
   }
 
+  function Backup () {
+    if [ -f "$1" ]; then
+      mv "$1" /tmp;
+      Msg "Your file, $1 has been moved to /tmp.";
+    fi;
+  }
+
   # First arg is prompt, second is a method to call if user hits 'Y'
   function Confirmation () {
     PROMPT=$1; DOIF=$2;
@@ -18,7 +25,8 @@
     NL;
 
     if [[ $REPLY =~	^[Yy]$ ]]; then
-      $DOIF;
+      export RESULT="${DOIF}";
+      Msg "Result: $RESULT";
       return 0;
     else
       Msg "Cancelled."
@@ -61,4 +69,18 @@
   function NeedsRoot () {
     Msg "This script requires elevated privileges. Exiting."
     Pause;
+  }
+
+
+  function IgnoreFile () {
+   # if src not in gitignore, add it
+   GITI=".gitignore"
+   SEARCH=`egrep -i "^$CRY" $GITI`
+
+   if [[ -z $SEARCH ]]; then
+     Msg "Adding $CRY to $GITI"
+     echo "$CRY" >> $GITI;
+   else
+     Msg "File is already in $GITI"
+   fi;
   }

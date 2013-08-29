@@ -2,7 +2,7 @@
 
 ## 
 ## pkgman.sh - exports $PKGMAN (i.e. /usr/bin/pacman)
-##	       exports $DISTRO (i.e. archlinux or debian)
+##	           exports $DISTRO (i.e. archlinux or debian)
 ## 
 
 . lib/txt.sh
@@ -44,14 +44,16 @@ function PkgInstall () {
 	TARG="$@";
 	Msg "Installing '$TARG'...";
 	CMD="$PKGMAN $INST $TARG";
-  Msg $CMD; }
+  echo $CMD;
+  eval $CMD; }
 
 function PkgUpdate () {
 	Msg "Updating pkg manager.";
 	CMD="`$FOUND $PREP`";
-  echo "[[ le cmd is $CMD ]]"; }
+  echo "$CMD";
+  eval "$CMD";
+}
 
 # Notify user of this fuckery
 Msg "Exporting PKGMAN to '$FOUND'.";
 Msg "Updating [$DIST] package manager.";
-PkgUpdate;

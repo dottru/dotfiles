@@ -1,8 +1,10 @@
 [color]
 	diff = true
 	ui = true
+	ui = true
+	ui = true
 [user]
-	name = Joshua Michael
+	name = Joshua Mikkael
 	email = dottru@gmail.com
 [push]
 	default = simple

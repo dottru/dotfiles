@@ -5,52 +5,59 @@ clear;
 . lib/txt.sh
 . lib/control.sh
 
+# password file
+PF="$HOME/.password";
+export PASS=`cat "$PF"`;
+
+## {{ Crypt methods
 function Encrypt () {
-  echo "$REQ";
-  cat "$1" | ccrypt -e -E PASS > "$2";
+  IN=$REQ; GO="${REQ}.cpt";
+  echo `Backup $GO`;
+
+  cat "$REQ" | ccrypt -e -E PASS > "$GO";
+  Msg "Encrypted file available at [$GO].";
 }
 
 function Decrypt () {
   IN=$REQ; GO="${REQ%.*}";
-  Msg "Decodng $REQ to $GO if it exists.";
-  mv $GO /tmp;
+  echo `Backup $GO`;
+
   cat "$REQ" | ccrypt -d -E PASS > "$GO";
-  echo `cat $GO`;
+  Msg "Decrypted file available at [$GO].";
 }
 
-# function Decide () {
-#   if [ $1 == "*.cpt" ]
-#   then Decrypt "$1" "${1%.*}";
-#   else Encrypt "$1" "$1.cpt";
-#   fi }
+## }}
 
-# Check for password
-PF="$HOME/.password";
-export PASS=`cat "$PF"`;
-
+#
+## Discovery stage
+#
 if [ ! -z $PASS ]; then
-  Msg "Password found.";
+  # We do have a password.
 
   export REQ="$1";
-  Msg "Cnverting file [$1]";
+  Msg "Converting file [$1]";
   
-  if [ -f $REQ ]; then
-    Msg "File exists.";
+  if [ -f $REQ ]; then # verify input exists
 
-    ext="${1##*.}"; # parse ext
-  
+    ext="${1##*.}"; # encrypted files end with .cpt
+
     if [ "cpt" == "${ext}" ]; then
-      Msg "Ends in cpt.";
+      Msg "Encrypted file supplied. Decrypting.";
       Decrypt;
+
     else
-      Msg "Not encrypted.";
+      Msg "Unencrypted file supplied. Encrypting.";
       Encrypt;
     fi;
 
   else
-    Msg "File did not exist.";
+    # Input likely didn't exist.
+    Msg "Could not open input file.";
+    exit 1;
   fi;
 
 else
   Msg "No password file.";
+  Msg "This script expects a pass file at [ $PF ];";
+  exit 1;
 fi
