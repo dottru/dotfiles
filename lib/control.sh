@@ -12,7 +12,7 @@
   function Backup () {
     if [ -f "$1" ]; then
       mv "$1" /tmp;
-      Msg "Your file, $1 has been moved to /tmp.";
+      Msg "Old file [ $1 ] backed up to /tmp";
     fi;
   }
 
@@ -27,10 +27,8 @@
     if [[ $REPLY =~	^[Yy]$ ]]; then
       Msg "Accepted.";
       echo `$2`;
-      #return 0;
     else
       Msg "Cancelled."
-      #return 1;
     fi
   }
 
@@ -46,8 +44,12 @@
   }
   
   function AsRoot () {
-    Msg "Elevating user privileges..."
-    sudo bash $SCRIPT; # if have probs use $0
+    if [ ! `id -u` -eq 0 ]; then
+      Msg "Elevating user privileges...";
+      sudo bash $SCRIPT; # if have probs use $0
+    else 
+      bash $SCRIPT;
+    fi;
   }
 
   function UID () {
@@ -71,15 +73,16 @@
     Pause;
   }
 
-
   function IgnoreFile () {
    # if src not in gitignore, add it
    GITI=".gitignore"
-   SEARCH=`egrep -i "^$CRY" $GITI`
+   SEARCH=`egrep -i "^$1" $GITI`
 
    if [[ -z $SEARCH ]]; then
-     Msg "Adding $CRY to $GITI"
-     echo "$CRY" >> $GITI;
+     Msg "Adding $1 to $GITI"
+     echo "$1" >> $GITI;
+     git add $GITI;
+     git commit -m 'safety';
    else
      Msg "File is already in $GITI"
    fi;
