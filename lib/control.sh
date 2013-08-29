@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# {{ Control flow
-
   # MatchCase 0 will make case statements insensitive
   function MatchCase () {
     if [[ $1 -eq 0 ]]; then
@@ -11,6 +9,7 @@
     fi;
   }
 
+  # First arg is prompt, second is a method to call if user hits 'Y'
   function Confirmation () {
     PROMPT=$1; DOIF=$2;
 
@@ -22,7 +21,7 @@
       $DOIF;
       return 0;
     else
-      msg "Cancelled."
+      Msg "Cancelled."
       return 1;
     fi
   }
@@ -37,11 +36,9 @@
 
     return $R;
   }
-# }}
-
-# {{ Run level
+  
   function AsRoot () {
-    msg "Elevating user privileges..."
+    Msg "Elevating user privileges..."
     sudo bash $SCRIPT; # if have probs use $0
   }
 

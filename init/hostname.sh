@@ -5,15 +5,16 @@
 
 NEW="awshost";
 
+# hostname -f acts funny on arch and leaves out the subdomain
 function GetFQDN () {
-  echo "`hostname -f`";
+  echo "`hostname`";
 }
 
 function SetHostname () {
   Msg "Setting hostname to '$NEW'...";
 
   hostnamectl set-hostname "$NEW";
-  echo "$NEW" > /etc/hostname
+  #echo "$NEW" > /etc/hostname
 
   Msg "Hostname set. Please re-log to see your changes.";
   Pause;
