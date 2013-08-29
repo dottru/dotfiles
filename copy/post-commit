@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 
-echo `pwd`;
-cd $HOME/dotfiles;
-
 # Auto push on commit
 echo "Gitting the pushizzle origin mastersizzle, you hear?";
 
-pushd ../../;
+cd $HOME/dotfiles;
 git push origin master;
-popd;
+
+echo "Pushed to github.";
