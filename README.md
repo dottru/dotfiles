@@ -1,10 +1,14 @@
-# dotfiles
+# jmkogut's dotfiles
 
 Organised dotfiles for the intelligent developer.
 
+## Features
+
+Automatic installation and configuration of a vim / nodejs / haskell / python environment. Including syntax checkers and the lovely solarized colour scheme. Works on Arch Linux and Debian. I haven't tested it on any others since I use these dotfiles exclusively for amazon EC2 instances.
+
 ## Installation
 
-Simply run the following snippet in bash or (for customisation), checkout dottru/files then run `./setup.sh` in the repository to install.
+Simply run the following snippet in bash or (for customisation), checkout dottru/dotfiles then run `./setup.sh` in the repository to install.
 
 ## GENERIC INSTALL
 
@@ -18,7 +22,7 @@ If you spot personal or secret data, please [report it.](https://help.github.com
 
 ----------------------------------------------------------
 
-## TODO -- 
+## TODO -- More jerking off with video streaming. Amazon has a cloud encoding engine but I have a sneaking suspicion that EC2 time is cheaper.
 
 [dotfiles]:  https://github.com/dottru/dotfiles
 [showmarks]: https://github.com/juanpabloaj/ShowMarks
