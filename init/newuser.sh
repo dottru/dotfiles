@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-. init/txt.sh
-. init/control.sh
+. lib/txt.sh
+. lib/control.sh 
 
   function isGroup () {
     RES=$(egrep -i "^$1" /etc/group)
@@ -20,13 +20,13 @@ function addToSudo () {
   TMP="/etc/sudoers.tmp.auto";
   ORI="/etc/sudoers";
 
-  msg "Adding $1 to sudoers.";
-  msg "---------------------";
+  Msg "Adding $1 to sudoers.";
+  Msg "---------------------";
 
   LINE="%$GROUP    ALL=NOPASSWD: ALL";
 
-  if [ -f $TMP ]; then
-      msg "!!! SUDOERS IN USE !!!";
+  if [[ -f $TMP ]]; then
+      Msg "!!! SUDOERS IN USE !!!";
       Pause;
   else
     cp $ORI $TMP;
@@ -35,10 +35,10 @@ function addToSudo () {
 
     # $? = most recent pipeline foreground exist status
     if [ "$?" -eq "0" ]; then
-        msg "$GROUP added to sudoers!~"
+        Msg "$GROUP added to sudoers!~"
         cp $TMP $ORI;
     else # TODO: log failure 
-        msg "Sudoer file modifications failed."
+        Msg "Sudoer file modifications failed."
         Pause;
     fi;
 
@@ -53,16 +53,16 @@ function CreateUser () {
   SEARCH=`egrep -i "^$GROUP" /etc/group`
 
   if [[ -n $SEARCH ]]; then
-    msg "Group '$GROUP' already exists...";
+    Msg "Group '$GROUP' already exists...";
   else
     # Create admins
-    msg "Adding custom admin group.";
+    Msg "Adding custom admin group.";
     groupadd $GROUP;
   fi;
 
   # Create user
   # m = create home, g = def group
-  msg "Creating user account.";
+  Msg "Creating user account.";
   useradd -m -g $GROUP $USERNAME;
 
   addToSudo "$GROUP";
@@ -71,14 +71,14 @@ function CreateUser () {
 }
 
 function UserSetup () {
-  msg "Setting up user for you.";
+  Msg "Setting up user for you.";
 
   read -p "Enter username for new account: " -e USERNAME
   Confirmation "Is [$USERNAME] correct?" CreateUser
 }
 
 function AsRoot () {
-  msg "Elevating user privileges..."
+  Msg "Elevating user privileges..."
   sudo bash $0;
 }
 
