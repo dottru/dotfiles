@@ -32,3 +32,4 @@ nosetests.xml
 .project
 .pydevproject
 *.netrwhist
+copy/s3.pass
