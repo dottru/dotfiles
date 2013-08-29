@@ -6,3 +6,5 @@ clone dotfiles for 0 and non0
 
 update package index
 upgrade packages
+
+ALL TODOS DONE.
