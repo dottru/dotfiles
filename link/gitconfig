@@ -16,3 +16,5 @@
   ci = commit
   c  = commit
   a  = add
+[core]
+	editor = vim
