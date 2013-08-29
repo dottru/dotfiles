@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+echo `pwd`;
+cd $HOME/dotfiles;
+
 # Auto push on commit
 echo "Gitting the pushizzle origin mastersizzle, you hear?";
 
