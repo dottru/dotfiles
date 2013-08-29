@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e # This forces the script to die on an error.
+
 . lib/txt.sh
 . lib/control.sh 
 
@@ -71,10 +73,15 @@ function CreateUser () {
 }
 
 function UserSetup () {
-  Msg "Setting up user for you.";
+  if [ `id -u` -ne 0 ]; then
+    Msg "This shit requires root, yo.";
+    exit 1;
+  else
+    Msg "Setting up user for you.";
 
-  read -p "Enter username for new account: " -e USERNAME
-  Confirmation "Is [$USERNAME] correct?" CreateUser
+    read -p "Enter username for new account: " -e USERNAME
+    Confirmation "Is [$USERNAME] correct?" CreateUser
+  fi;
 }
 
 function AsRoot () {
@@ -82,8 +89,9 @@ function AsRoot () {
   sudo bash $0;
 }
 
-function Confirmed () {
-  RequireRoot UserSetup AsRoot;
-}
+# TODO :: definitely gotta re-add the root requirement
+#function Confirmed () {
+#  RequireRoot UserSetup AsRoot;
+#}
 
-Confirmation "Do you want to setup a new user account? " Confirmed
+Confirmation "Do you want to setup a new user account? " UserSetup

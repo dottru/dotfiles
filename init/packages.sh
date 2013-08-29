@@ -13,3 +13,4 @@ PkgInstall ccrypt # for encryption
 PkgInstall ctags  # for tab completion
 PkgInstall nodejs # for some of the scripting
 PkgInstall s3cmd  # interface for s3
+PkgInstall sudo   # fuckin, arch doesn't come with sudo!?

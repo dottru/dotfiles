@@ -10,3 +10,9 @@
 	default = simple
 [credential]
 	helper = cache --timeout=360000
+[alias]
+  st = status
+  s  = status
+  ci = commit
+  c  = commit
+  a  = add

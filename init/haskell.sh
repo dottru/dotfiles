@@ -11,3 +11,7 @@ PkgInstall cabal-install # haskie pkg man
 
 Msg "Updating cabal."
 cabal update
+
+# yesod
+cabal install yesod-platform
+cabal install yesod-bin

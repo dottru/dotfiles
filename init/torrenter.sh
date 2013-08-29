@@ -20,3 +20,6 @@ Msg "Copying over transmission config.";
 cp "copy/transmission.json" "$CONF";
 Msg "Transmission has been configured but has been left off.";
 Msg "[[ systemctl start transmission ]]";
+
+Msg "Installing node.js bindings for transmission."
+npm install transmission;

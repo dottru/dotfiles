@@ -25,12 +25,12 @@
     NL;
 
     if [[ $REPLY =~	^[Yy]$ ]]; then
-      export RESULT="${DOIF}";
-      Msg "Result: $RESULT";
-      return 0;
+      Msg "Accepted.";
+      echo `$2`;
+      #return 0;
     else
       Msg "Cancelled."
-      return 1;
+      #return 1;
     fi
   }
 
