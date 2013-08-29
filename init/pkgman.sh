@@ -5,7 +5,7 @@
 ##	       exports $DISTRO (i.e. archlinux or debian)
 ## 
 
-. init/lib.sh
+. lib/txt.sh
 
 Section "Distro determination..."
 
@@ -31,9 +31,9 @@ else
 	Msg "Pacman is a lie. Assuming debian.";
 
 	FOUND=`which aptitude`;
-	 DIST=debian;
-	 INST=install;
-	 PREP=update;
+	 DIST="debian";
+	 INST="install";
+	 PREP="update";
 fi;
 
 # Exports

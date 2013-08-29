@@ -1,22 +1,30 @@
 #!/usr/bin/env bash
 
-. init/lib.sh
+. lib/txt.sh
+. lib/control.sh
 
 NEW="awshost";
 
+function GetFQDN () {
+  echo "`hostname -f`";
+}
+
 function SetHostname () {
-  msg "Setting hostname to '$NEW'...";
+  Msg "Setting hostname to '$NEW'...";
+
   hostnamectl set-hostname "$NEW";
-  msg "Hostname set. Please re-log to see your changes.";
+  echo "$NEW" > /etc/hostname
+
+  Msg "Hostname set. Please re-log to see your changes.";
   Pause;
 }
 
 function Begin () {
 
-  msg "Hostname"
-  msg "================="
+  Msg "Hostname"
+  Msg "================="
   NL;
-  msg "Currently: `GetFQDN`"
+  Msg "Currently: `GetFQDN`"
   NL;
 
   read -p "Enter your new hostname: " -e NEW;
