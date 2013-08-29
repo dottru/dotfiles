@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-. scripts/common.sh
+. init/txt.sh
+. init/control.sh
 
-  " isGroup
   function isGroup () {
     RES=$(egrep -i "^$1" /etc/group)
     if [[ $? == 0 ]]; then

@@ -14,11 +14,12 @@ echo "Placing dotfies where they need to go.";
 # Create new user account
 . init/newuser.sh
 
-# Mount S3 bucket
-. init/s3-bucket.sh
-
 # Generate / export ssh keys
- . scripts/ssh-keys.sh
+ . init/ssh-keys.sh
+
+ # Export SSH keys to github
+ . init/export_ssh.sh
 
 msg "Setup complete.";
+
 Pause;

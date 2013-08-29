@@ -21,3 +21,4 @@ PkgInstall tree   # for navigating dir trees
 PkgInstall htop   # for multiplexing
 PkgInstall ccrypt # for encryption
 PkgInstall ctags  # for tab completion
+PkgInstall nodejs # for some of the scripting
