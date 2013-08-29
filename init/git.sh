@@ -25,8 +25,9 @@ inp "Enter your git email} " && git config --global user.email "$REPLY"
 HOOK=".git/hooks/post-commit";
 
 echo "[Configuring git to auto-push to master on commit.]";
-echo -e '#!/usr/bin/env bash\r\ngit push origin master' > $HOOK;
+cp copy/post-commit $HOOK;
 chmod +x $HOOK
+git init
 
 echo "Git configuration completed..";
 inp "Press enter." && echo "Done.";

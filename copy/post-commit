@@ -3,6 +3,6 @@
 # Auto push on commit
 echo "Gitting the pushizzle origin mastersizzle, you hear?";
 
-#pushd ../;
+pushd ../;
 git push origin master;
-#popd;
+popd;
