@@ -32,4 +32,4 @@ nosetests.xml
 .project
 .pydevproject
 *.netrwhist
-passwd-s3fs
+copy/s3.pass
