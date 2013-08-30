@@ -1,12 +1,14 @@
+# Add to PATH
+export PATH=$PATH:"$HOME/.cabal/bin"
 
 # Set vimpath
-export VIM="$HOME/dotfiles/link/vim";
+#export VIM="$HOME/dotfiles/link/vim";
 
 # Git
-alias add="git add"
-alias ci ="git commit"
-
-function GitACP () {
-  git add $@;
-  git commit -a;
-}
+#alias add="git add"
+#alias ci ="git commit"
+#
+#function GitACP () {
+#  git add $@;
+#  git commit -a;
+#}
