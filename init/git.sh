@@ -23,6 +23,8 @@ ln -s `pwd`/link/gitconfig $cfg;
 function AutoPush () {
   # Make it push on commit
   HOOK=".git/hooks/post-commit";
+  HOOK2=".git/modules/vim/hooks/post-commit";
+
   cp copy/post-commit /tmp;
   lhook="/tmp/post-commit";
   
@@ -35,7 +37,11 @@ function AutoPush () {
 
   Msg "[Configuring git to auto-push to master on commit.]";
   cp $lhook $HOOK;
+  cp $lhook $HOOK2;
+
   chmod +x $HOOK;
+  chmod +x $HOOK2;
+
   git init;
   [ ! -z $GO ] && popd;
 
