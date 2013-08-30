@@ -1,0 +1,12 @@
+
+# Set vimpath
+export VIM="$HOME/dotfiles/link/vim";
+
+# Git
+alias add="git add"
+alias ci ="git commit"
+
+function GitACP () {
+  git add $@;
+  git commit -a;
+}
