@@ -1,22 +1,21 @@
 #!/usr/bin/env bash
 
 . lib/txt.sh
+. lib/control.sh
 
-GCFG="$HOME/.gitconfig"
-
-# Link git config
-if [[ -f $GCFG ]]; then
-  Msg ".gitconfig moved to /tmp"
-  mv $GCFG /tmp/;
-fi;
+cfg="$HOME/.gitconfig"
+Backup $cfg;
 
 Msg "Symlinking new gitconfig."
-ln -s `pwd`/link/gitconfig $GCFG;
+ln -s `pwd`/link/gitconfig $cfg;
 
 # Enable color in git
 #echo "Configuring user info in git."
 #git config --global --add color.ui true
 #git config --global core.editor "vim"
+#git config core.worktree `pwd`
+#git config core.bare false
+#git config receive.denycurrentbranch ignore
 
 #inp " Enter your git name} " && git config --global user.name "$REPLY"
 #inp "Enter your git email} " && git config --global user.email "$REPLY"

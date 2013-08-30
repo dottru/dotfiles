@@ -9,6 +9,12 @@
     fi;
   }
 
+  function Debug () {
+    [ ! -z $DFDEBUG ] &&
+      Msg $@;
+  }
+
+
   function Backup () {
     if [ -f "$1" ]; then
       Msg "Old file [ $1 ] backed up to /tmp";

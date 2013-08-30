@@ -1,5 +1,7 @@
 #!/usr/bn/env bash
 
+. lib/globals.sh
+
 REPO="dottru/dotfiles"
 RAWURI="https://raw.github.com/$REPO/$BRANCH/"
 GH_URI="https://github.com/$REPO.git"

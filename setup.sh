@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
-echo "Installing a few required packages first.";
-
+. lib/globals.sh
 . lib/txt.sh
-. init/pkgman.sh   # Determines which pkg this sys uses
+. init/pkgman.sh 
 
-# Update the local package manager.
+Msg "Updating pkg manager.";
 PkgUpdate;
 
 . init/packages.sh # Installs various dev packages
