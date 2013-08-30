@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-. lib/txt.sh
-. init/pkgman.sh
+# Testing how needed this is.
+#. lib/txt.sh
+#. init/pkgman.sh
 
 Section "Installing required packages."
 
