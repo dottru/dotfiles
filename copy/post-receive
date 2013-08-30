@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+## Post recieve git hook
+## inst: cp $self $git/hooks
+
+# STD post-recv behaviour.
+  while read oldrev newrev refname
+  do
+  :
+  done
+
+# Exports env vars for git.
+{ 
+  # script expets to start out in .git/hooks
+  pushd ../../;
+
+  export GIT_DIR=$(pwd);
+  export GIT_WORK_TREE="$(pwd);
+
+  popd;
+}
+
+git checkout --force
+
+cd $GIT_WORK_TREE || exit;
+git submodule update --init --recursive --force
