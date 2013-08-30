@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+git submodule init
+git submodule update
+
 . lib/globals.sh
 . lib/txt.sh
 . init/pkgman.sh 
@@ -10,7 +13,7 @@ PkgUpdate;
 . init/packages.sh # Installs various dev packages
 
 echo "Placing dotfiles where they need to go.";
-#. init/linker.sh # Links dotfiles to $HOME. Unused atm.
+. init/linker.sh # Links dotfiles to $HOME. Unused atm.
 
 # Set hostname
 . init/hostname.sh

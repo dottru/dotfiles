@@ -17,7 +17,8 @@ PkgInstall exhuberant-ctags  # for tab completion
 PkgInstall nodejs # for some of the scripting
 PkgInstall s3cmd  # interface for s3
 PkgInstall sudo   # fuckin, arch doesn't come with sudo!?
-PkgInstall haskell-platform 
+PkgInstall ghc
+PkgInstall cabal-install
 
 
 # Useless
