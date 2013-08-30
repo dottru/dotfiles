@@ -18,8 +18,9 @@ echo "Placing dotfiles where they need to go.";
 # Create new user account
 . init/newuser.sh
 
-# Generate / export ssh keys
- . init/ssh-keys.sh
+# Only part of this whole damn script that doesn't need sudo.
+## Generate / export ssh keys
+# . init/ssh-keys.sh
 
 Msg "Setup complete.";
 Pause;
