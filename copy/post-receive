@@ -2,19 +2,23 @@
 
 ## Post recieve git hook
 ## - - - - - - - - - - -
+# This hook requires core.worktree to be explicitly set, and
+# receive.denyCurrentBranch to be set to false.
 
-# Standard post-recv behaviour.
+# Read standard input or hook will fail
 while read oldrev newrev refname
 do
 :
 done
 
-# Map working dir to global
-export GIT_DIR=$(pwd);
+# Unset GIT_DIR or the universe will implode
+unset GIT_DIR
 
-# CD to repo
-cd $DOTFILES || exit;
+# Change directory to the working tree; exit on failure
+cd `git config --get core.worktree` || exit
 
-# Prepare repo
+# Force checkout
 git checkout --force
+
+# Force update submodules
 git submodule update --init --recursive --force
