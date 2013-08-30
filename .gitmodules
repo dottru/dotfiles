@@ -2,7 +2,6 @@
 	path = host_keys
   url = git@github.com:dottru/hostkeys.git
   ignore = dirty
-[submodule "link/vim"]
-	path = link/vim
-  url = git@github.com:dottru/vim.git
-  ignore = dirty
+[submodule "vim"]
+	path = vim
+	url = git@github.com:dottru/vim.git
