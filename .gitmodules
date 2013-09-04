@@ -1,8 +1,8 @@
 [submodule "host_keys"]
-	path = host_keys
-  url = git@github.com:dottru/hostkeys.git
-  ignore = dirty
+    path = host_keys
+    url = git@github.com:dottru/hostkeys.git
+    ignore = dirty
 [submodule "link/vim"]
-	path = link/vim
-  url = git@github.com:dottru/vim.git
-  ignore = dirty
+    path = link/vim
+    url = git@github.com:dottru/vim.git
+    ignore = dirty
