@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-git submodule init
-git submodule update
+git submodule update --init --recursive
 
 . lib/globals.sh
 . lib/txt.sh

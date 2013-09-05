@@ -6,6 +6,9 @@
 
 Section "Installing required packages."
 
+PkgInstall rubygems
+gem install ghi
+
 PkgInstall curl   # FUUUUUUUUUUUUCKING HEEELL
 PkgInstall tmux   # for term multiplexing,
 PkgInstall vim    # for owning everyone
@@ -19,6 +22,8 @@ PkgInstall s3cmd  # interface for s3
 PkgInstall sudo   # fuckin, arch doesn't come with sudo!?
 PkgInstall ghc
 PkgInstall cabal-install
+
+npm install -g jslint
 
 
 # Useless
