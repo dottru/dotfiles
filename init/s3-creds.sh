@@ -2,24 +2,33 @@
 
 . lib/txt.sh
 . lib/control.sh
+. lib/crypt.sh
 
-. init/crypt.sh
+SPWD=$HOME/.s3cfg;
+CPWD="copy/s3cfg.$CRYPT_EXT";
 
-S3FILE="copy/s3pass";
-S3FILE2="copy/s3pass.cpt";
+QuitOnExit;
 
+Section "S3 Credentials";
 
-function En () {
-  Encrypt "$S3FILE";
-}
+if [ -f $SPWD ]; then
+  Msg "S3cmd config exists. Exiting.";
+  exit 0;
+else
 
-function Dec () {
-  Decrypt "$S3FILE.crypt";
-}
+  if [ -f $CPWD ]; then
+    function DoIt () {
+      Msg "Decrypting credentials.";
+      export OUT=$SPWD;
+      export IN=$CPWD;
+      
+      Decrypt $OUT;
+      Msg "S3cmd configured properly.";
+    }
+    Confirmation "Decrypt S3 creds?" DoIt;
+  else
+    Msg "Running S3CMD --configure";
+    s3cmd --configure
+  fi;
 
-if [[ -f $S3FILE ]]; then
-    Confirmation "Encrypt your creds?" En;
-elif [[ -f $S3FILE2 ]]; then
-    Confirmation "How about a decrypt?" Dec;
 fi;
-

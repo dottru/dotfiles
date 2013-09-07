@@ -7,8 +7,7 @@
 . lib/control.sh
 . lib/crypt.sh
 
-set -e; # Quit on exit failure
-
+QuitOnExit;
 
 # ---------------------------
 # ---------------------------

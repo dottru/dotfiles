@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+  # Quit on exit status
+  function QuitOnExit () {
+    set -e; # Quit on exit failure
+  }
+
+
   # MatchCase 0 will make case statements insensitive
   function MatchCase () {
     if [[ $1 -eq 0 ]]; then
