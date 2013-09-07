@@ -16,3 +16,7 @@
   a  = add
 [core]
 	editor = vim
+[github]
+	user = jmkogut
+[ghi]
+	token = 131bc2f2e6f3b049a89ce5fac06d9e6964191da6

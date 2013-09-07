@@ -66,11 +66,13 @@
     DO=$1; FAIL=$2;
 
     if [[ $(UID) -ne 0 ]]; then
-      $FAIL;
+      NeedsRoot;
+      #$FAIL;
       return 1;
     else
+      Msg "Ensuring that script is ran as root...";
       $DO;
-      return 0;
+      #return 0;
     fi;
   }
 
@@ -80,6 +82,7 @@
   }
 
   function IgnoreFile () {
+   Msg "Adding [$1] to gitignore"
    # if src not in gitignore, add it
    GITI=".gitignore"
    SEARCH=`egrep -i "^$1" $GITI`
@@ -92,4 +95,8 @@
    else
      Msg "File is already in $GITI"
    fi;
+  }
+
+  function Wait () {
+    read -p " [Press any key.]";
   }
