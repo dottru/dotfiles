@@ -5,6 +5,20 @@
     set -e; # Quit on exit failure
   }
 
+  # Show dbg output
+  function SetDebug () {
+    export SHELLOPTS=xtrace
+    bash $0;
+    exit 1;
+
+
+    #echo "DIEEEEE";
+    Msg "[Entering debg mode.]";
+    NL;
+    
+    set -o xtrace
+  }
+
 
   # MatchCase 0 will make case statements insensitive
   function MatchCase () {

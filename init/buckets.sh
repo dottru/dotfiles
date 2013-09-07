@@ -1,23 +1,22 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 . lib/txt.sh
 . lib/control.sh
-. init/pkgman.sh
 
-function Install () {
-  PkgInstall s3cmd
-  PkgInstall gnupg
+clear;
 
-  Msg "Installed s3cmd and gnupg."
-}
+BUCK=thechex
+MNT=/mnt/thchex;
 
-function Setup () {
-  Confirmation "Install s3cmd and gpg?" Install;
+Section "Mounting S3 Bucket";
 
-  Msg "S3CMD is about to ask you for credentials."
-  Msg "If you need to decrypt some, hit up `init/s3-creds.sh`"
+if [ -d $MNT ]; then
+  Msg "Re-mounting [${BUCK}]";
+  umount $MNT;
+else
+  Msg "Creating [${MNT}]";
+  mkdir $MNT;
+fi;
 
-  Pause;
-
-  s3cmd --configure
-}
+Msg "Mounting ${BUCK} to [${MNT}]";
+s3fs $BUCK $MNT;

@@ -19,6 +19,8 @@ PkgInstall ctags  # for tab completion
 PkgInstall exhuberant-ctags  # for tab completion
 PkgInstall nodejs # for some of the scripting
 PkgInstall s3cmd  # interface for s3
+PkgInstall gnupg  # gpg
+PkgInstall libfuse-dev 
 PkgInstall sudo   # fuckin, arch doesn't come with sudo!?
 PkgInstall ghc
 PkgInstall cabal-install

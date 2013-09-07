@@ -30,6 +30,7 @@ Section "dottru/dotfiles SETUP"
 
 # S3 credentials
 . init/s3-creds.sh
+. init/buckets.sh
 
 # Only part of this whole damn script that doesn't need sudo.
 ## Generate / export ssh keys

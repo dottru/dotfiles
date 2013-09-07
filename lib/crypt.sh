@@ -22,6 +22,7 @@ function Encrypt () {
 
   Msg "Encrypted file to [$OUT].";
   Confirmation "Would you like $OUT committed to SCM?" Commit;
+  echo `IgnoreFile "$IN"`;
 }
 
 function Decrypt () {
