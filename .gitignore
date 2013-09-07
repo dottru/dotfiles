@@ -34,3 +34,4 @@ nosetests.xml
 *.netrwhist
 copy/s3.pass
 copy/boto
+copy/s3cfg
