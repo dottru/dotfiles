@@ -103,6 +103,6 @@
    fi;
   }
 
-  function Wait () {
+  function Pause () {
     read -p " [Press any key.]";
   }

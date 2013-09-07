@@ -4,14 +4,15 @@
 . lib/txt.sh
 . init/pkgman.sh 
 
+#######################################
 Msg "Pulling submodules."
 git submodule update --init --recursive
+#######################################
+
+Section "dottru/dotfiles SETUP"
 
 # Setup vim
 . vim/setup.sh
-
-Msg "Updating pkg manager.";
-PkgUpdate;
 
 . init/packages.sh # Installs various dev packages
 
@@ -26,6 +27,9 @@ PkgUpdate;
 
 # Decrypt secrets
 . init/secrets.sh
+
+# S3 credentials
+. init/s3-creds.sh
 
 # Only part of this whole damn script that doesn't need sudo.
 ## Generate / export ssh keys

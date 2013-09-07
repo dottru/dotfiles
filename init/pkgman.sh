@@ -56,7 +56,7 @@ function PackageMan () {
   # Notify user of this fuckery
   Msg "Exporting PKGMAN to '$FOUND'.";
   PkgUpdate;
-  Wait;  
+  Pause;
   #Confirmation "Update package manager?" PkgUpdate;
 }
 

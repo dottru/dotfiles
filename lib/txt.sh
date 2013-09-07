@@ -16,9 +16,6 @@ function inp() { read -r -p "$1"; }
 function Title () { Msg "$@"; sep; }
 function Section() { sep; Msg "$@"; sep; NL; }
 
-# Pause for input
-function Pause () { read -p "[Enter to continue...]"; }
-
 # Indicators
 function Success () { echo "Success."; }
 function Fail    () { echo "Failure."; }
