@@ -36,3 +36,4 @@ copy/s3.pass
 copy/boto
 copy/s3cfg
 copy/passwd-s3fs
+copy/aws
