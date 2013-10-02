@@ -13,7 +13,7 @@ Simply run the following snippet in bash or (for customisation), checkout dottru
 ## GENERIC INSTALL
 
 
-```bash <(wget -qO- https://raw.github.com/dottru/dotfiles/master/web.sh)```
+```bash <(wget -qO- https://raw.github.com/dottru/dotfiles/debfix/web.sh)```
 
 
 ## Secrets
