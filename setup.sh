@@ -1,14 +1,22 @@
 #!/usr/bin/env bash
 
-  # Includes
-. lib/control.sh
-. lib/globals.sh
-. lib/txt.sh
+clear; 
+
+. lib/control.sh        # control flow
+. lib/globals.sh        # global vars
+. lib/txt.sh            # text formatting
+
+  # Fixes local git uri so password gets cached
+. lib/git.sh # will set the remote uri for `pwd`
 
 
-clear;
-Section " -- dotfiles [[ SETUP ]]"; NL;
-Msg     "  -  We will guide you through setup. One moment.";
+#######################################
+
+    Section " jmkogut's dotfiles repository ";
+    Msg " using branch // $(GetBranch) //";
+
+#######################################
+exit 1; 
 
 
 #######################################

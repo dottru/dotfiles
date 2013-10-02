@@ -5,6 +5,16 @@
     set -e; # Quit on exit failure
   }
 
+  DirPush() {
+    pushd "$@" > /dev/null;
+    echo "Pushed dir to current -> [ `pwd` ]";
+  }
+
+  DirPop () {
+    popd > /dev/null;
+    echo -e "\nReturning back to [ `pwd` ]";
+}
+
   # Show dbg output
   function SetDebug () {
     export SHELLOPTS=xtrace
@@ -38,7 +48,7 @@
     SRC="${1}"; DEST="${2}";
     rm -rf ${2};
     ln -s ${SRC} ${DEST};
-    Msg " ${SRC} --> ${DEST}";
+    Msg " linked ${SRC} --> ${DEST}";
   }
 
   # Re-create backupdir

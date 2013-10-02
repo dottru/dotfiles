@@ -14,4 +14,8 @@ function SetRemote () {
     git remote set-url origin $uri;
 }
 
-SetRemote "dottru" "dotfiles";
+function FixGitRemote() { SetRemote "dottru" "dotfiles"; }
+
+function GetBranch () {
+    echo `git rev-parse --abbrev-ref HEAD`;
+}
