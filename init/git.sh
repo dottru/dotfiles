@@ -23,13 +23,12 @@ function AutoPush () {
   GH="${GITROOT}/${pchook}";
   VH="${VIMROOT}/${pchook}";
   
-  # -- do worl
+  # -- do work
   cp copy/${PC} ${TPC};
-  
-  if [ ! -z $WDIR ]; then
-    Msg "|| CD -> '${WDIR}'.";
-    pushd "$WDIR" > /dev/null;
-  fi;
+
+  # echo expanded path
+  Msg "|| CD -> $(ExpandPath $WDIR).";
+  pushd "$WDIR" > /dev/null;
 
   Msg "[Configuring git to auto-push to master on commit.]";
   cp $TPC $GH;
@@ -40,7 +39,7 @@ function AutoPush () {
 
   Msg "Copied post commit hooks. Initialising git.";
   git init;
-  popd;
+  popd > /dev/null;
 
   Msg "Git configuration completed..";
 }

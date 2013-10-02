@@ -19,3 +19,7 @@ function FixGitRemote() { SetRemote "dottru" "dotfiles"; }
 function GetBranch () {
     echo `git rev-parse --abbrev-ref HEAD`;
 }
+
+function GitInitSubmodules () {
+  git submodule update --init --recursive;
+}

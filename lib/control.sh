@@ -72,10 +72,16 @@
 
     if [[ $REPLY =~	^[Yy]$ ]]; then
       Msg "Accepted.";
-      echo `$2`;
+      echo "`$DOIF`";
     else
       Msg "Cancelled."
     fi
+  }
+
+  function ExpandPath () {
+    pushd ${1} > /dev/null;
+    echo "`pwd`";
+    popd > /dev/null;
   }
 
   function DidSucceed () {

@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
 
-# Auto push on commit
-echo "Gitting the pushizzle origin mastersizzle, you hear?";
-
 cd $HOME/dotfiles;
-git push origin master;
+. lib/control.sh
+. lib/git.sh
+
+# Auto push on commit
+BRANCH=$(GetBranch);
+echo "Auto-commit hook engaged. Pushing to github repository.";
+echo " using branch :: ${BRANCH}";
+
+git push origin $BRANCH;
 
 echo "Pushed to github.";
+Pause;
