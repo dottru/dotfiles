@@ -33,12 +33,22 @@
     [ ! -z $DFDEBUG ] &&
       Msg $@;
   }
+  
+  function LinkBack () {
+    SRC="${1}"; DEST="${2}";
+    rm -rf ${2};
+    ln -s ${SRC} ${DEST};
+    Msg " ${SRC} --> ${DEST}";
+  }
 
-
+  # Re-create backupdir
+  export BAKDIR="/tmp/dotfiles";
+  rm -rf $BAKDIR; mkdir -p $BAKDIR;
   function Backup () {
     if [ -f "$1" ]; then
-      Msg "Old file [ $1 ] backed up to /tmp";
-      mv "$1" /tmp;
+      DEST="${BAKDIR}/`basename $1`";
+      Msg "Old file [ $1 ] backed up to ${DEST}.";
+      mv "$1" "${DEST}";
     fi;
   }
 

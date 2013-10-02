@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Testing how needed this is.
-#. lib/txt.sh
-#. init/pkgman.sh
+. lib/txt.sh
+. init/pkgman.sh
 
 Section "Installing required packages."
 
@@ -26,7 +26,6 @@ PkgInstall ghc
 PkgInstall cabal-install
 
 npm install -g jslint
-
 
 # Useless
 # PkgInstall mosh   # it does the damned low-speed ssh bullish

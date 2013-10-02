@@ -1,54 +1,66 @@
 #!/usr/bin/env bash
 
+clear;
+
 . lib/txt.sh
 . lib/control.sh
 
-cfg="$HOME/.gitconfig"
-Backup $cfg;
+# symlink git config
+Msg "Symlinking new gitconfig.";
+LinkBack "`pwd`/link/gitconfig" "$HOME/.gitconfig";
 
-Msg "Symlinking new gitconfig."
-ln -s `pwd`/link/gitconfig $cfg;
-
-# Enable color in git
-#echo "Configuring user info in git."
-#git config --global --add color.ui true
-#git config --global core.editor "vim"
-#git config core.worktree `pwd`
-#git config core.bare false
-#git config receive.denycurrentbranch ignore
-
-#inp " Enter your git name} " && git config --global user.name "$REPLY"
-#inp "Enter your git email} " && git config --global user.email "$REPLY"
 
 function AutoPush () {
-  # Make it push on commit
-  HOOK=".git/hooks/post-commit";
-  HOOK2=".git/modules/vim/hooks/post-commit";
+  Msg "Enabling auto-push for `pwd`";
+    
+  # vars
+  WDIR="${1}"; TMP="/tmp"; PC="post-commit";
+  TPC="${TMP}/${PC}";
 
-  cp copy/post-commit /tmp;
-  lhook="/tmp/post-commit";
+  GITROOT=".git"; VIMROOT="${GITROOT}/modules/vim";
+  pchook="/hooks/post-commit";
+
+  GH="${GITROOT}/${pchook}";
+  VH="${VIMROOT}/${pchook}";
   
-  if [ ! -z $1 ]; then
-    GO="$1";
-
-    Msg "|| Moved to '$1'.";
-    pushd "$GO";
+  # -- do worl
+  cp copy/${PC} ${TPC};
+  
+  if [ ! -z $WDIR ]; then
+    Msg "|| CD -> '${WDIR}'.";
+    pushd "$WDIR" > /dev/null;
   fi;
 
   Msg "[Configuring git to auto-push to master on commit.]";
-  cp $lhook $HOOK;
-  cp $lhook $HOOK2;
+  cp $TPC $GH;
+  cp $TPC $VH;
 
-  chmod +x $HOOK;
-  chmod +x $HOOK2;
+  chmod +x $GH;
+  chmod +x $VH;
 
+  Msg "Copied post commit hooks. Initialising git.";
   git init;
-  [ ! -z $GO ] && popd;
+  popd;
 
   Msg "Git configuration completed..";
 }
 
-echo `AutoPush .`;
-echo `AutoPush ./link/vim`;
+function EnableAutoPush () {
+    AutoPush ".";
+}
 
-inp "Press enter." && echo "Done.";
+function CreateGitCFG () {
+    return 1;
+    # Enable color in git
+    #echo "Configuring user info in git."
+    #git config --global --add color.ui true
+    #git config --global core.editor "vim"
+    #git config core.worktree `pwd`
+    #git config core.bare false
+    #git config receive.denycurrentbranch ignore
+
+    #inp " Enter your git name} " && git config --global user.name "$REPLY"
+    #inp "Enter your git email} " && git config --global user.email "$REPLY"
+}
+
+Confirmation "Configure git to auto-push on commit?" EnableAutoPush;

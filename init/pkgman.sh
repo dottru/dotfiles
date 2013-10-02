@@ -5,8 +5,10 @@
 ##	           exports $DISTRO (i.e. archlinux or debian)
 ## 
 
-. lib/txt.sh
-. lib/control.sh
+. ./lib/txt.sh
+. ./lib/control.sh
+
+Msg "Running as [`whoami`] in [`pwd`]."; NL;
 
 Section "Distro determination..."
 
@@ -41,7 +43,7 @@ function PackageMan () {
   # Otherwise, assume user has debian right?
   else
       Title "Debian Linux";
-      Msg "Pacman is a lie. Assuming debian.";
+      Msg "Discovered a debian system";
 
       FOUND=`which aptitude`;
        DIST="debian";
@@ -57,7 +59,7 @@ function PackageMan () {
   Msg "Exporting PKGMAN to '$FOUND'.";
   PkgUpdate;
   Pause;
-  #Confirmation "Update package manager?" PkgUpdate;
+  Confirmation "Update package manager?" PkgUpdate;
 }
 
 # quit if not 0
