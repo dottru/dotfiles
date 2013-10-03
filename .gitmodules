@@ -6,4 +6,4 @@
 	url = https://github.com/seebi/dircolors-solarized
 [submodule "vim"]
 	path = vim
-	url = git@github.com:dottru/vim.git
+	url = https://github.com/dottru/vim.git
