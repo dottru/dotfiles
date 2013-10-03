@@ -3,7 +3,7 @@
 export DFDEBUG=1;
 
 export DOTFILES=$(pwd);
-export GIT_DIR=$(pwd);
+#export GIT_DIR=$(pwd);
 
 function GetScriptDir () {
 	SCRIPT_PATH="${BASH_SOURCE[0]}";
