@@ -1,7 +1,3 @@
-[submodule "host_keys"]
-	path = host_keys
-    url = git@github.com:dottru/hostkeys.git
-    ignore = dirty
 [submodule "link/tmux-colors-solarized"]
 	path = link/tmux-colors-solarized
 	url = https://github.com/seebi/tmux-colors-solarized
