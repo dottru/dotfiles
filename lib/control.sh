@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-  # Quit on exit status
-  function QuitOnExit () {
-    set -e; # Quit on exit failure
-  }
-
   DirPush() {
     pushd "$@" > /dev/null;
     echo "Pushed dir to current -> [ `pwd` ]";
@@ -13,22 +8,7 @@
   DirPop () {
     popd > /dev/null;
     echo -e "\nReturning back to [ `pwd` ]";
-}
-
-  # Show dbg output
-  function SetDebug () {
-    export SHELLOPTS=xtrace
-    bash $0;
-    exit 1;
-
-
-    #echo "DIEEEEE";
-    Msg "[Entering debg mode.]";
-    NL;
-    
-    set -o xtrace
   }
-
 
   # MatchCase 0 will make case statements insensitive
   function MatchCase () {
@@ -61,6 +41,8 @@
       mv "$1" "${DEST}";
     fi;
   }
+
+  
 
   # First arg is prompt, second is a method to call if user hits 'Y'
   function Confirmation () {
