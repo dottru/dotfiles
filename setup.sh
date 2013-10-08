@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+git config push.default current
+git submodule update --init --recursive
+
 . lib/control.sh        # control flow
 . lib/globals.sh        # global vars
 . lib/txt.sh            # text formatting

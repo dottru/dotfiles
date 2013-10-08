@@ -17,3 +17,10 @@ eval `dircolors ~/.dir_colors`
 #}
 
 #function pi() { sudo aptitude install $@; }
+
+function pkg.search  () { export SEARCH="$@"; sudo aptitude search $SEARCH; }
+function pkg.install () {
+  INST=${@:-SEARCH};
+  echo "Installing ${INST}."
+  sudo aptitude install $INST;
+}

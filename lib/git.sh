@@ -5,7 +5,7 @@
 function SetRemote () {
     USER="${1}";
     REPO="${2}";
-    uri="git@github.com:$USER/$REPO.git";
+    uri="https://github.com/$USER/$REPO.git";
 
 
     Msg "Setting remote uri of `pwd`";
