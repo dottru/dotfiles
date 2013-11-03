@@ -16,6 +16,11 @@ Simply run the following snippet in bash or (for customisation), checkout dottru
 ```bash <(wget -qO- https://raw.github.com/dottru/dotfiles/master/web.sh)```
 
 
+## DEBIAN INSTALL
+
+
+```bash <(wget -qO- https://raw.github.com/dottru/dotfiles/debfix/web.sh)```
+
 ## Secrets
 
 If you spot personal or secret data, please [report it.](https://help.github.com/articles/remove-sensitive-data)
