@@ -57,7 +57,7 @@ echo -e "\nBranch [ ${BRANCH} ] selected.";
 USER="dottru"; REPO="dotfiles";
 UNIQUEIDENT=$USER; 
  
-  GH_URI="https://github.com/${USER}/${REPO}.git"
+  GH_URI="git://git@github.com/${USER}/${REPO}.git"
 LIB_BASE="https://raw.github.com/${USER}/${REPO}/${BRANCH}/lib"; 
  
 WORKDIR="/tmp/${USER}";
