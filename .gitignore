@@ -2,7 +2,7 @@
 
 # C extensions
 *.so
-
+./vim
 # Packages
 *.egg
 *.egg-info
