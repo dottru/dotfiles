@@ -280,8 +280,9 @@ hilights = (
   { text = "jmko"; nick = "yes"; word = "yes"; },
   { text = "jmkog"; nick = "yes"; word = "yes"; },
   { text = "jmkogu"; nick = "yes"; word = "yes"; },
+  { text = "josh"; nick = "yes"; word = "yes"; },
   { text = "jmkogut"; nick = "yes"; word = "yes"; },
-  { text = "josh"; nick = "yes"; word = "yes"; }
+  { text = "db9"; nick = "yes"; word = "yes"; }
 );
 windows = {
   1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
