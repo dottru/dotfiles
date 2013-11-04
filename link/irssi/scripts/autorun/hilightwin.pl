@@ -1,0 +1,1 @@
+/home/joshua/.irssi/scripts/hilightwin.pl

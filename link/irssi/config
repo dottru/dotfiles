@@ -199,6 +199,7 @@ statusbar = {
         more = { priority = "-1"; alignment = "right"; };
         barend = { priority = "100"; alignment = "right"; };
       };
+      disabled = "yes";
     };
 
     # we treat input line as yet another statusbar :) It's possible to
@@ -282,3 +283,31 @@ hilights = (
   { text = "jmkogut"; nick = "yes"; word = "yes"; },
   { text = "josh"; nick = "yes"; word = "yes"; }
 );
+windows = {
+  1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
+  2 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#r.opiates";
+        tag = "freenode2";
+      }
+    );
+  };
+  3 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#boats";
+        tag = "subluminal";
+      }
+    );
+  };
+  4 = { name = "hilight"; sticky = "yes"; };
+};
+mainwindows = {
+  1 = { first_line = "12"; lines = "29"; };
+  4 = { first_line = "1"; lines = "11"; };
+};
