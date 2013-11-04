@@ -14,3 +14,11 @@ streamed it live over HTTP, ala youtube. My next project will be a dynamic webap
 and stream them to you at your convenience.
 
 Here's a CLI way to grant access to your S3 buckets -- s3cmd setacl --acl-public --recursive $BUCKET
+
+## vim
+
+TIL :: use sessions like a boss
+To automatically save and restore views for *.c files: >
+  au BufWinLeave *.c mkview
+  au BufWinEnter *.c silent loadview
+
