@@ -8,6 +8,8 @@ Section "VIM Setup";
 Msg "Cloning vim cfgs.";
 rm -rf ~/.vim ~/.vimrc;
 git clone git@github.com:dottru/vim.git ~/.vim
+
+rm -rf ~/.vim/lib;
 ln -s ./lib ~/.vim/lib;
 
 Pause;

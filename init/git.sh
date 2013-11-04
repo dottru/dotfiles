@@ -12,7 +12,6 @@ git config push.default current
 Msg "Symlinking new gitconfig.";
 LinkBack "`pwd`/link/gitconfig" "$HOME/.gitconfig";
 
-
 function AutoPush () {
   Msg "Enabling auto-push for `pwd`";
     
@@ -44,7 +43,7 @@ function AutoPush () {
   git init;
   popd > /dev/null;
 
-  Msg "Git configuration completed..";
+  Msg "Git configuration completed.";
 }
 
 function EnableAutoPush () {

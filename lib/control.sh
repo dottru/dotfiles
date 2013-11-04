@@ -33,7 +33,7 @@
 
   # Re-create backupdir
   export BAKDIR="/tmp/dotfiles";
-  rm -rf $BAKDIR; mkdir -p $BAKDIR;
+  sudo rm -rf $BAKDIR; mkdir -p $BAKDIR;
   function Backup () {
     if [ -f "$1" ]; then
       DEST="${BAKDIR}/`basename $1`";
@@ -53,8 +53,8 @@
     NL;
 
     if [[ $REPLY =~	^[Yy]$ ]]; then
-      Msg "Accepted.";
-      echo "`$DOIF`";
+      #Msg "Accepted.";
+      Msg "`$DOIF`";
     else
       Msg "Cancelled."
     fi
