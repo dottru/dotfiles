@@ -7,3 +7,6 @@
 [submodule "vim"]
 	path = vim
 	url = https://github.com/dottru/vim.git
+[submodule "link/irssi/nicklist"]
+	path = link/irssi/nicklist
+	url = https://github.com/ConX/nicklist.pl
