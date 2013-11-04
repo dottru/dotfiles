@@ -5,6 +5,9 @@ clear;
 . lib/txt.sh
 . lib/control.sh
 
+# Git push behaviour
+git config push.default current
+
 # symlink git config
 Msg "Symlinking new gitconfig.";
 LinkBack "`pwd`/link/gitconfig" "$HOME/.gitconfig";
