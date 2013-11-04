@@ -62,6 +62,12 @@
 
 #######################################
 
+    # Change your shell
+    . init/setshell.sh
+    Pause;
+
+#######################################
+
     # S3 credentials
     . init/s3-creds.sh
     . init/buckets.sh
