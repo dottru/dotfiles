@@ -38,3 +38,4 @@ copy/s3cfg
 copy/passwd-s3fs
 copy/aws
 copy/ssh.config
+/home/joshua/.ssh/config
