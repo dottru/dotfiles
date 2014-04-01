@@ -1,5 +1,5 @@
 # Add to PATH
-export PATH=$PATH:"$HOME/.cabal/bin"
+export PATH="$PATH:$HOME/.cabal/bin:/usr/local/aws/eb/bin:/usr/local/aws/rds/bin:/usr/local/aws/elasticbeanstalk/eb/linux/python2.7:/usr/local/aws/elasticbeanstalk/AWSDevTools/Linux"
 
 # Set vimpath
 #export VIM="$HOME/dotfiles/link/vim";
@@ -12,3 +12,4 @@ export PATH=$PATH:"$HOME/.cabal/bin"
 #  git add $@;
 #  git commit -a;
 #}
+
